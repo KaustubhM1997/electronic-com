@@ -17,10 +17,7 @@ const Home = () => {
         />
 
         <button className="button primary">
-          <Link
-            className="login"
-            to="/product-listing"
-          >
+          <Link className="login" to="/product-listing">
             Shop Now
           </Link>
         </button>
@@ -120,9 +117,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Footer/>
-
-      
+      <Footer />
     </>
   );
 };
