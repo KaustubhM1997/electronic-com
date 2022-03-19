@@ -20,10 +20,9 @@ const Home = () => {
 
         <ul className="nav-pills">
           <button className="nav-item button">
-            {" "}
             <Link className="login" to="/pages/authentication-pages/login.html">
               Login
-            </Link>{" "}
+            </Link>
           </button>
 
           <div className="badge-element nav-item">
