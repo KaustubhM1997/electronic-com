@@ -133,6 +133,15 @@ footer li {
     margin: 0.4rem 0rem;
     font-size: 1rem;
     cursor: pointer;
+    /* text-decoration: none; */
+}
+
+
+.footer-pills {
+
+    text-decoration: none;
+    color: var(--color-white);
+    /* cursor: pointer; */
 }
 
 .footer-list-header {

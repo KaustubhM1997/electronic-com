@@ -20,13 +20,13 @@ const Nav = () => {
 
         <ul className="nav-pills">
           <button className="nav-item button">
-            <Link className="login" to="/pages/authentication-pages/login.html">
+            <Link className="login" to="/login-page">
               Login
             </Link>
           </button>
 
           <div className="badge-element nav-item">
-            <Link to="/pages/wishlist-management/wishlist-management.html">
+            <Link to="/wishlist">
               <i className="fa-regular fa-heart icon"></i>
             </Link>
 
@@ -34,7 +34,7 @@ const Nav = () => {
           </div>
 
           <div className="badge-element nav-item">
-            <Link to="/pages/cart-management/cart-management.html">
+            <Link to="/cart-management">
               <i className="fa-solid fa-cart-arrow-down icon"></i>
             </Link>
 
