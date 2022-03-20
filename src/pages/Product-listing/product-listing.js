@@ -12,10 +12,6 @@ const ProductListing = () => {
       <div className="sub-heading title">
         <h2 className="h2">Shop by Category</h2>
       </div>
-
-      {/* <h1>Product Listing</h1> */}
-
-      {/* <Footer/> */}
     </>
   );
 };

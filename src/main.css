@@ -3,7 +3,7 @@
 body {
 
     font-family: 'Montserrat', sans-serif;
-    background-color: #fdf2f8;
+    background-color: var(--background-color);
 }
 
 
@@ -21,6 +21,7 @@ body {
     --button-hover: #1e293b;
     --badge-background: black;
     --button-hover: #be185d;
+    --background-color: #fdf2f8;
 
 
 }

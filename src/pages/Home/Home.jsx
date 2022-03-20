@@ -1,13 +1,13 @@
 import "./home.css";
-import React from "react";
-import { Nav } from "../../components/Nav/nav";
-import { Footer } from "../../components/Footer/footer";
 import { Link } from "react-router-dom";
+import {Card} from "../../components/Card/card.jsx";
+import { categories } from "../../backend/db/categories";
 
 const Home = () => {
+
+  const [categoryMen] = categories; //categories is an array of objects
   return (
     <>
-      <Nav />
 
       <section className="container-img">
         <img
@@ -28,15 +28,16 @@ const Home = () => {
           <h2 className="h2">Shop by Category</h2>
         </div>
         <div className="card-container">
-          <div className="men-card">
+          <Card category = {categoryMen} />
+          {/* <div className="men-card">
             <p className="card-heading">Men</p>
 
             <img
               className="img-card adjust"
               src="/assets/men-nav.webp"
-              alt=""
+              alt="category-men"
             />
-          </div>
+          </div> */}
 
           <div className="women-card">
             <p className="card-heading">Women</p>
@@ -44,7 +45,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/women-nav.webp"
-              alt=""
+              alt="category-women"
             />
           </div>
 
@@ -54,7 +55,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/kids-nav.webp"
-              alt=""
+              alt="category-kids"
             />
           </div>
 
@@ -64,7 +65,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="../assets/best-seller-nav.jpg"
-              alt=""
+              alt="category-bestseller"
             />
           </div>
         </div>
@@ -81,7 +82,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/pet-supplies.jpg"
-              alt=""
+              alt="category-pet-supplies"
             />
           </div>
 
@@ -91,7 +92,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/gaming-accessories.jpg"
-              alt=""
+              alt="category-gaming-accessories"
             />
           </div>
 
@@ -101,7 +102,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/health-personal-care.jpg"
-              alt=""
+              alt="category-health-personal-care"
             />
           </div>
 
@@ -111,13 +112,11 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="../assets/home-decor.jpg"
-              alt=""
+              alt="category-home-decor"
             />
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 };
