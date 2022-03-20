@@ -1,13 +1,12 @@
 import "../../pages/Home/home.css";
 
-const Card = ({ categoryName, categoryImg }) => {
-//   const { categoryName, categoryImg } = category;
-
+const Card = ({ category }) => {
+  const { categoryName, categoryImg } = category;
   return (
     <div className="men-card">
-      <p className="card-heading">{categoryName.name}</p>
+      <p className="card-heading">{categoryName}</p>
 
-      <img className="img-card adjust" src={categoryImg.img} alt="category-men" />
+      <img className="img-card adjust" src={categoryImg} alt="category-men" />
     </div>
   );
 };
