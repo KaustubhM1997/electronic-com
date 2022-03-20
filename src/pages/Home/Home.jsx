@@ -28,7 +28,22 @@ const Home = () => {
           <h2 className="h2">Shop by Category</h2>
         </div>
         <div className="card-container">
-          <Card category = {categoryMen} />
+
+          {
+
+            categories.map((category, index) => {
+
+
+              <Card key = {index} categoryName = {category.categoryName} categoryImg = {category.categoryImg} />
+            })
+          }
+
+
+          {/* {categories.map((category) => {
+
+
+          })}
+          <Card category = {categoryMen} /> */}
           {/* <div className="men-card">
             <p className="card-heading">Men</p>
 
@@ -39,7 +54,7 @@ const Home = () => {
             />
           </div> */}
 
-          <div className="women-card">
+          {/* <div className="women-card">
             <p className="card-heading">Women</p>
 
             <img
@@ -67,7 +82,7 @@ const Home = () => {
               src="../assets/best-seller-nav.jpg"
               alt="category-bestseller"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 

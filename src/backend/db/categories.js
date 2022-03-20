@@ -16,16 +16,19 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "women",
+    categoryImg: "/Assets/women-nav.webp"
   
   },
   {
     _id: uuid(),
     categoryName: "kids",
+    categoryImg: "/Assets/kids-nav.webp"
   
   },
   {
     _id: uuid(),
     categoryName: "best-sellers",
+    categoryImg: "/Assets/best-seller-nav.jpg"
   
   }
 ];
