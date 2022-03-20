@@ -1,19 +1,19 @@
 import "../Home/home.css";
 import React from "react";
 import { Nav } from "../../components/Nav/nav";
-import "./product-listing.css";
+import "./login.css";
 import { Footer } from "../../components/Footer/footer";
 
-const ProductListing = () => {
+const Login = () => {
   return (
     <>
       <Nav />
 
       <div className="sub-heading title">
-        <h2 className="h2">Shop by Category</h2>
+        <h2 className="h2">Coming soon</h2>
       </div>
     </>
   );
 };
 
-export { ProductListing };
+export { Login };
