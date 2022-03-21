@@ -1,144 +1,118 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700;900&display=swap");
 
 body {
 
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-color);
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--background-color);
 
 }
 
-
 * {
-    box-sizing: border-box;
-    margin: 0rem;
-    padding: 0rem;
+  box-sizing: border-box;
+  margin: 0rem;
+  padding: 0rem;
 }
 
 :root {
-
-    --primary-color: #f9a8d4;
-    --secondary-color: #ec4899;
-    --color-white: white;
-    --button-hover: #1e293b;
-    --badge-background: black;
-    --button-hover: #be185d;
-    --background-color: #fdf2f8;
-
-
+  --primary-color: #f9a8d4;
+  --secondary-color: #ec4899;
+  --color-white: white;
+  --button-hover: #1e293b;
+  --badge-background: black;
+  --button-hover: #be185d;
+  --background-color: #fdf2f8;
 }
 
 .navigation-container {
-
-    display: flex;
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    overflow: hidden;
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    left: 0;
-    top: 0;
+  display: flex;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  overflow: hidden;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 .nav-pills {
-
-    display: flex;
-   
+  display: flex;
 }
 
 .header-style {
-
-    text-decoration: none;
-    color: var(--color-white);
+  text-decoration: none;
+  color: var(--color-white);
 }
 
 .icon {
-
-    color: var(--color-white);
+  color: var(--color-white);
 }
 
 .nav-item {
-
-    margin: 0rem 1rem;
-    font-size: 1.2rem;
-    list-style: none;
+  margin: 0rem 1rem;
+  font-size: 1.2rem;
+  list-style: none;
 }
 
 .login {
-
-    text-decoration: none;
-    color: var(--color-white);
-    
+  text-decoration: none;
+  color: var(--color-white);
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-brand {
-
-    font-weight: bold;
-    font-size: larger;
-    text-decoration: none;
-    color: var(--color-white);
-    
+  font-weight: bold;
+  font-size: larger;
+  text-decoration: none;
+  color: var(--color-white);
 }
 
 .input-search {
-
-margin-left: 5rem;
-margin-right: 10rem;
-
+  margin-left: 5rem;
+  margin-right: 10rem;
 }
 
 .search {
-
-    padding: 0.5rem;
-    width: 55rem;
-    border-radius: 0.5rem;
-    border: none;
+  padding: 0.5rem;
+  width: 55rem;
+  border-radius: 0.5rem;
+  border: none;
 }
 
-
 .button {
-
-    border: none;
-    background-color: var(--badge-background);
-    padding: 0.4rem 0.8rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    
+  border: none;
+  background-color: var(--badge-background);
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
 }
 
 .button:hover {
-
-    background-color: var(--button-hover);
+  background-color: var(--button-hover);
 }
 
-
 .icon {
-
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    cursor: pointer;
-   
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
 }
 
 .badge-element {
-
-    position: relative;
+  position: relative;
 }
 
 .notif-cart {
-
-    position: absolute;
-    bottom: 1.2rem;
-    left: 1.2rem;
-    border-radius: 50%;
-    background-color: var(--badge-background);
-    font-weight: bold;
-    padding: 0.1rem 0.4rem;
-    font-size: small;
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1.2rem;
+  border-radius: 50%;
+  background-color: var(--badge-background);
+  font-weight: bold;
+  padding: 0.1rem 0.4rem;
+  font-size: small;
 }

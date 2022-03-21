@@ -1,20 +1,12 @@
 import "./home.css";
-
-import React from "react";
-import { Nav } from "../../components/Nav/nav";
 import { Link } from "react-router-dom";
-import {Card} from "../../components/Card/card.jsx";
+import { Card } from "../../components/Card/card.jsx";
 import { categories } from "../../backend/db/categories";
 
-
 const Home = () => {
-
-  const [categoryMen] = categories; //categories is an array of objects
+  // const [categoryMen] = categories; //categories is an array of objects // we would do this only if there was one category and pass categoryMen into category below.
   return (
     <>
-
-      <Nav />
-
       <section className="container-img">
         <img
           className="main-image"
@@ -23,9 +15,7 @@ const Home = () => {
         />
 
         <button className="button primary">
-
           <Link className="login" to="/product-listing">
-
             Shop Now
           </Link>
         </button>
@@ -35,95 +25,19 @@ const Home = () => {
         <div className="sub-heading">
           <h2 className="h2">Shop by Category</h2>
         </div>
+
+        {/* Mapping and passing to the card component */}
+
         <div className="card-container">
-
-          <div className="men-card">
-            <p className="card-heading">Men</p>
-
-            <img
-              className="img-card adjust"
-              src="/assets/men-nav.webp"
-              alt=""
-            />
-          </div>
-
-          <div className="women-card">
-            <p className="card-heading">Women</p>
-
-            <img
-              className="img-card adjust"
-              src="/assets/women-nav.webp"
-              alt=""
-            />
-          </div>
-
-          <div className="kids-card">
-            <p className="card-heading">Kids</p>
-
-            <img
-              className="img-card adjust"
-              src="/assets/kids-nav.webp"
-              alt=""
-            />
-          </div>
-
-          {
-
-            categories.map((category, index) => {
-
-
-              <Card key = {index} categoryName = {category.categoryName} categoryImg = {category.categoryImg} />
-            })
-          }
-
-
-          {/* {categories.map((category) => {
-
-
-          })}
-          <Card category = {categoryMen} /> */}
-          {/* <div className="men-card">
-            <p className="card-heading">Men</p>
-
-            <img
-              className="img-card adjust"
-              src="/assets/men-nav.webp"
-              alt="category-men"
-            />
-          </div> */}
-
-          {/* <div className="women-card">
-            <p className="card-heading">Women</p>
-
-            <img
-              className="img-card adjust"
-              src="/assets/women-nav.webp"
-              alt="category-women"
-            />
-          </div>
-
-          <div className="kids-card">
-            <p className="card-heading">Kids</p>
-
-            <img
-              className="img-card adjust"
-              src="/assets/kids-nav.webp"
-              alt="category-kids"
-            />
-          </div>
-          <div className="best-card">
-            <p className="card-heading">Best sellers</p>
-
-            <img
-              className="img-card adjust"
-              src="../assets/best-seller-nav.jpg"
-              alt=""
-            />
-          </div>
-              alt="category-bestseller"
-            />
-          </div> */}
-
+          {categories.map(
+            // we take the categories from backend
+            (
+              categor //categor is every element from the categories database
+            ) => (
+              <Card key={categor._id} category={categor} /> //we use key as categor.id as categories (backend has a unique id). We take all categor elements we get from the database and put them in an object which we store in category. Then we pass category to our card component and then destructure it into categoryName and categoryId (these keys are present in categories). Then we just render the destrcutured items as JSX.
+            )
+            // this is an object
+          )}
         </div>
       </div>
 
@@ -138,10 +52,7 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/pet-supplies.jpg"
-
-          
               alt="category-pet-supplies"
-
             />
           </div>
 
@@ -151,8 +62,6 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/gaming-accessories.jpg"
-
-     
               alt="category-gaming-accessories"
             />
           </div>
@@ -163,8 +72,6 @@ const Home = () => {
             <img
               className="img-card adjust"
               src="/assets/health-personal-care.jpg"
-
-          
               alt="category-health-personal-care"
             />
           </div>
@@ -180,39 +87,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <footer class="footer-container">
-        <div className="grid-container">
-          <div>
-            <h3 className="footer-list-header">Site Links</h3>
-            <ul className="footer-items-list">
-              <li className="footer-items">Product Listing</li>
-              <li className="footer-items">Your orders</li>
-              <li className="footer-items">Cart</li>
-              <li className="footer-items">Wishlist</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="footer-list-header">Socials</h3>
-            <ul className="footer-items-list">
-              <li className="footer-items">GitHub</li>
-              <li className="footer-items">LinkedIn</li>
-              <li className="footer-items">Twitter</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="footer-list-header">Let us Help You</h3>
-            <ul className="footer-items-list">
-            <li className="footer-items">Help</li>
-              <li className="footer-items">Nozama Assistant</li>
-              <li className="footer-items">Returns and Replacements</li>
-              
-            </ul>
-          </div>
-        </div>
-      </footer>
     </>
   );
 };
