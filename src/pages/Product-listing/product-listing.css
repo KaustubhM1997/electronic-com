@@ -4,11 +4,11 @@
   display: grid;
   min-height: 100vh;
   grid-gap: 2rem;
+  /* The aside will take 1fr and the rest (content) will take 7fr */
   grid-template-columns: 1fr 7fr;
-  padding-bottom: 0.5rem;
   grid-template-areas: "header header" "aside main";
   margin-top: 5rem;
-  padding-right: 1.5rem;
+  padding: 0 1.5rem 0.5rem 1rem;
 }
 
 .flex-column {
@@ -94,7 +94,7 @@ input {
 
 .card-vertical {
   position: relative;
-  box-shadow: 0px 0px 5px 5px lightgray;
+  box-shadow: 0px 0px 5px 5px var(--card-box-shadow);
   border-radius: 5px;
 }
 
@@ -113,7 +113,7 @@ input {
 .card-image .adjust-image {
   height: 48vh;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .card-text {
@@ -122,11 +122,11 @@ input {
   margin: 0.9rem 0 0 0.5rem;
 }
 
-.card-subtext {
-  color: gray;
+/* .card-subtext {
+  color: var(--text-line-through);
   font-size: 0.8rem;
   margin-left: 0.5rem;
-}
+} */
 
 .card-price {
   margin-top: 0.5rem;
@@ -134,7 +134,7 @@ input {
 }
 
 .text-line-through {
-  color: gray;
+  color: var(--text-line-through);
   text-decoration: line-through;
   font-size: 0.7rem;
   padding-left: 0.2rem;
@@ -163,13 +163,41 @@ input {
 
 .card-heart-icon {
   position: absolute;
-  color: var(--color-white);
-  right: 0.7rem;
-  top: 1.3rem;
+  color: var(--secondary-color);
+  right: 0.6rem;
+  top: 0.4rem;
   font-size: 1.2rem;
   cursor: pointer;
 }
 
 .card-heart-icon:hover {
+  color: var(--primary-color);
+}
+
+.rating-badge {
+  border: 0.5px solid;
+  width: 3.2rem;
+  padding: 0.2rem;
+  display: flex;
+  border-radius: 1.5rem;
+  /* text-align: center; */
+  background-color: var(--color-white);
+  border: none;
   color: var(--secondary-color);
+  font-weight: bold;
+  position: relative;
+  bottom: 23rem;
+  left: 0.5rem;
+}
+
+.star-icon {
+  margin-left: 0.2rem;
+  color: var(--secondary-color);
+}
+
+.discount-percent {
+  margin-left: 0.5rem;
+  color: var(--product-discount);
+  font-weight: bold;
+  font-size: 1rem;
 }

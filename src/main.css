@@ -21,6 +21,9 @@ body {
   --badge-background: black;
   --button-hover: #be185d;
   --background-color: #fdf2f8;
+  --product-discount: #22c55e;
+  --text-line-through: gray;
+  --card-box-shadow: lightgray;
 }
 
 .navigation-container {

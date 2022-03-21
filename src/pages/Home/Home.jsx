@@ -1,6 +1,6 @@
 import "./home.css";
 import { Link } from "react-router-dom";
-import { Card } from "../../components/Card/card.jsx";
+import { Card } from "../../components/Home-card/home-card.jsx";
 import { categories } from "../../backend/db/categories";
 
 const Home = () => {

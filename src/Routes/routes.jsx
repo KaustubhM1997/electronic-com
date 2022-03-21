@@ -5,6 +5,7 @@ import { ProductListing } from "../pages/Product-listing/product-listing";
 import { Wishlist } from "../pages/Wishlist/wishlist";
 import { Cart } from "../pages/Cart/cart";
 import { Login } from "../pages/Login/login";
+import Mockman from "mockman-js";
 
 
 const ParentRouter = () => {
@@ -15,6 +16,7 @@ const ParentRouter = () => {
       <Route path="/wishlist" element={<Wishlist />}></Route>
       <Route path="/cart-management" element={<Cart />}></Route>
       <Route path="/login-page" element={<Login />}></Route>
+      <Route path="/mockman" element={<Mockman />} />
     </Routes>
   );
 };
