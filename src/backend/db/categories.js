@@ -1,5 +1,4 @@
 import { v4 as uuid } from "uuid";
-// import {Men} from "../../../public/Assets/men.nav.webp"
 
 /**
  * Category Database can be added here.
@@ -10,25 +9,21 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "men",
-    categoryImg: "/Assets/men-nav.webp"
-
+    categoryImg: "/Assets/men-nav.webp",
   },
   {
     _id: uuid(),
     categoryName: "women",
-    categoryImg: "/Assets/women-nav.webp"
-  
+    categoryImg: "/Assets/women-nav.webp",
   },
   {
     _id: uuid(),
     categoryName: "kids",
-    categoryImg: "/Assets/kids-nav.webp"
-  
+    categoryImg: "/Assets/kids-nav.webp",
   },
   {
     _id: uuid(),
     categoryName: "best-sellers",
-    categoryImg: "/Assets/best-seller-nav.jpg"
-  
-  }
+    categoryImg: "/Assets/best-seller-nav.jpg",
+  },
 ];
