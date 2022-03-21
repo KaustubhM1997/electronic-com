@@ -4,6 +4,7 @@ const ProductCard = ({ productcard }) => {
   const { title, price, rating, categoryImg } = productcard;
 
   return (
+    <>
     <div className="card-image">
       <div className="card-vertical">
         <div className="card-vertical-info flex-column">
@@ -36,6 +37,7 @@ const ProductCard = ({ productcard }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
