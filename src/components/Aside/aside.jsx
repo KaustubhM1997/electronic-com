@@ -48,35 +48,64 @@ const Aside = ({ dispatchProp, state }) => {
           <h3 className="filter-headings">Rating</h3>
           <form className="rating-options flex-column">
             <label>
-              {" "}
               <input
-                checked={state.rateBy === "4"}
                 onChange={() =>
                   dispatchProp({
                     type: "FILTER_BY_RATINGS",
-                    payload: {rateBy: 4}
+                    payload: 4,
                   })
                 }
+                checked={state.rateBy === 4}
                 type="radio"
                 name="rating"
-                // value="4 Stars & above"
+                value="4 Stars & above"
               />
               4 Stars & above
             </label>
             <label>
-              {" "}
-              <input type="radio" name="rating" value="3 Stars & above" />3
-              Stars & above
+              <input
+                onChange={() =>
+                  dispatchProp({
+                    type: "FILTER_BY_RATINGS",
+                    payload: 3,
+                  })
+                }
+                checked={state.rateBy === 3}
+                type="radio"
+                name="rating"
+                value="3 Stars & above"
+              />
+              3 Stars & above
             </label>
             <label>
-              {" "}
-              <input type="radio" name="rating" value="2 Stars & above" />2
-              Stars & above
+              <input
+                onChange={() =>
+                  dispatchProp({
+                    type: "FILTER_BY_RATINGS",
+                    payload: 2,
+                  })
+                }
+                checked={state.rateBy === 2}
+                type="radio"
+                name="rating"
+                value="2 Stars & above"
+              />
+              2 Stars & above
             </label>
             <label>
-              {" "}
-              <input type="radio" name="rating" value="1 Stars & above" />1 Star
-              & above
+              <input
+                onChange={() =>
+                  dispatchProp({
+                    type: "FILTER_BY_RATINGS",
+                    payload: 1,
+                  })
+                }
+                checked={state.rateBy === 1}
+                type="radio"
+                name="rating"
+                value="1 Star & above"
+              />
+              1 Star & above
             </label>
           </form>
         </div>

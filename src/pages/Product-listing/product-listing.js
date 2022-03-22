@@ -22,12 +22,16 @@ const initialFilters = {
 
 
 const [state, dispatch] = useReducer((state, action) => {
+  // console.log(action);
   switch (action.type) {
+
+    
     case "SORT":
       // console.log("Kaus");
       return { ...state, sortItemsBy: action.payload };
       case "FILTER_BY_RATINGS":
-      return {...state, rateBy: action.payload.rateBy};
+        
+      return {...state, rateBy: action.payload};
   }
 }, initialFilters);
 
@@ -42,7 +46,7 @@ const getSortedItems = (productData, sortItemsBy) => {
     });
   } else if (sortItemsBy === "HIGH_TO_LOW") {
     return [...productData].sort((item1, item2) => {
-      const price2 = item2.price - item1.price;
+      const price2 = item2.price - item1.price;  //the price here is what we get from the db
       return price2;
     });
   }
@@ -53,17 +57,24 @@ const getSortedItems = (productData, sortItemsBy) => {
 const getSortedList = getSortedItems(products, state.sortItemsBy); // 1
 
 
-const sortFourStarItems = (productData, rateBy) => {
+//function for sorting items as per rating
 
-  if(rateBy === "4_STARS_AND_ABOVE"){
+// console.log(state);
 
-    return[...productData].filter((product) => product.rateBy >= rateBy)
-  }
 
-  return productData
+const sortItemsByRating = (productData, rateBy) => {
+
+  // if(rateBy === "4_STARS_AND_ABOVE"){
+
+    // console.log(productData);
+    // console.log(rateBy);
+  
+
+    return [...productData].filter((product) => product.rating >= rateBy)   // rating is what we get from the db and the values of rateby we pass in the specific input elements. The payload we get when dispatch is fired and the rateby value should be nums and not strings so that we can compare them. 
+
 }
 
-const getFourStarItems = sortFourStarItems(getSortedList, state.rateBy)
+const RatingItems = sortItemsByRating(getSortedList, state.rateBy)
 
 
 
@@ -90,7 +101,7 @@ const getFourStarItems = sortFourStarItems(getSortedList, state.rateBy)
           </div>
 
           <div className="item-list">
-            {getFourStarItems.map((item) => (
+            {RatingItems.map((item) => (
               <ProductCard  key = {item._id} productcard={item} />
             ))}
           </div>

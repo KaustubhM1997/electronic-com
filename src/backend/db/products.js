@@ -44,7 +44,7 @@ export const products = [
     _id: uuid(),
     title: "Daily Sun Hat",
     price: 300,
-    rating: "3.9",
+    rating: "1.9",
     categoryName: "Kids",
     categoryImg: "https://media.istockphoto.com/photos/trendy-girl-in-hat-looking-away-picture-id1154728772?b=1&k=20&m=1154728772&s=170667a&w=0&h=hyPUUXhkVVpLXYTNMGZjw9N1SezkoqvomtCHEUvb8lg="
   },
