@@ -1,24 +1,23 @@
 import { createContext, useContext } from "react/cjs/react.production.min";
+import { productReducer } from "../reducers/productReducer";
+import { useReducer } from "react";
+import { Aside } from "../components/Aside/aside";
 
 const ProductListing = createContext(null);
 
 
 const ProductProvider = ({children}) => {
 
+  
+//Defining the reducer
 
-
-    //put everything here after doing filters
-
-    //move reducers to a separate folder
-
-
-
+const [state, dispatch] = useReducer(productReducer, initialFilters);
 
     return (
 
-        <ProductListing>
+        <ProductListing.Provider value = {{state, dispatch}}>
             {children}
-        </ProductListing>
+        </ProductListing.Provider>
     )
 }
 
