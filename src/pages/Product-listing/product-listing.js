@@ -16,8 +16,8 @@ const ProductListing = () => {
     rateBy: null,
     inStock: false,
     fastDelivery: false,
-    category: [] // we pass an empty array here so that multiple categories can be put in an array (for us to be able to select multiple categories)
-    // priceRange: 981
+    category: [], // we pass an empty array here so that multiple categories can be put in an array (MEN, Women, Kids, etc..) (for us to be able to select multiple categories)
+    priceRange: 1990
   };
 
   // defining the product reducer here
@@ -25,7 +25,7 @@ const ProductListing = () => {
   const productReducer = (state, action) => {
     // console.log(action);
 
-    console.log(action.payload)
+    // console.log(action.payload)
     switch (action.type) {
       case "SORT":
         return { ...state, sortItemsBy: action.payload };
@@ -38,9 +38,17 @@ const ProductListing = () => {
       case "CATEGORY":
         const categoryExist = state.category.includes(action.payload)
 
-        console.log(categoryExist, "hi");
+        // console.log(categoryExist, "hi");
         return categoryExist ? {...state, category: state.category.filter(item => item !== action.payload)}: {...state, category: [...state.category, action.payload]}
         // return{...state, category: [...state.category, action.payload]} // in order to select multiple filters we just take an array and add any new filter to the ones already present by spreading them.
+
+        case "PRICE_RANGE":
+
+          // console.log(action.payload, state.priceRange, 'here')
+          return {...state, priceRange: action.payload} // we don't need the state here as we don't want to add anything there. We just need the price range selected by user, hence we pass the payload directly.
+
+        case "CLEAR":
+          return initialFilters;
     }
   };
 
@@ -133,6 +141,20 @@ const ProductListing = () => {
   const getCategoryItems = categoryItems(fastDeliveryProducts, state.category)
 
 
+  //function for price range
+
+const priceRangeProducts = (data, priceRange) => {
+  return [...data].filter((product) => product.price <= priceRange);
+};
+
+//calling the above function
+
+const priceRangeItems = priceRangeProducts(
+  getCategoryItems,
+  state.priceRange
+);
+
+
   return (
     <>
       <div className="main-wrapper">
@@ -150,11 +172,11 @@ const ProductListing = () => {
           <div className="item-heading">
             <h3>Show All Products</h3>
 
-            <p>(Showing 10 Products)</p>
+            <p>(Showing {priceRangeItems.length} Products of {products.length} Products)</p>
           </div>
 
           <div className="item-list">
-            {getCategoryItems.map((item) => (
+            {priceRangeItems.map((item) => (
               <ProductCard key={item._id} productcard={item} />
             ))}
           </div>

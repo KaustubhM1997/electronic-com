@@ -7,19 +7,26 @@ const Aside = ({ dispatch, state }) => {
       <aside className="filter-container flex-column">
         <div className="filter-header filter-spaces">
           <h3 className="filter-headings">Filters</h3>
-          <a className="filter-clear" href="#">
+          <a onClick={() => dispatch({type: "CLEAR"})} className="filter-clear" href="#">
             Clear
           </a>
         </div>
 
         <div className="filter-price flex-column filter-spaces">
-          <h3 className="filter-headings">Price</h3>
+          <h3 className="filter-headings">Price: {state.priceRange}</h3>
           <div className="filter-price-range">
             <h3 className="filter-headings">100</h3>
             <h3 className="filter-headings">1000</h3>
-            <h3 className="filter-headings">2000</h3>
+            <h3 className="filter-headings">1990</h3>
           </div>
-          <input min="100" max="1000" step="200" type="range" />
+          <input
+
+          onChange = {(e) => dispatch({type: "PRICE_RANGE", payload: Number(e.target.value)})}
+          value = {state.priceRange}
+          min="120" 
+          max="1990" 
+          step="55" 
+          type="range" />
         </div>
 
         <div className="filter-price flex-column filter-spaces">
@@ -51,7 +58,7 @@ const Aside = ({ dispatch, state }) => {
         <div className="filter-category flex-column">
           <h3 className="filter-headings">Category</h3>
           <div className="input-checkbox-container">
-            {console.log(state.category)}
+            {/* {console.log(state.category)} */}
             <input 
             onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
             name = "category"
