@@ -51,22 +51,44 @@ const Aside = ({ dispatch, state }) => {
         <div className="filter-category flex-column">
           <h3 className="filter-headings">Category</h3>
           <div className="input-checkbox-container">
-            <input type="checkbox" className="input-checkbox" />
+            {console.log(state.category)}
+            <input 
+            onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
+            name = "category"
+            checked = {state.category.includes("Men")}
+            type="checkbox" 
+            value = "Men"
+            className="input-checkbox" />
             <p className="checkbox-notify">Men</p>
           </div>
 
           <div className="input-checkbox-container">
-            <input type="checkbox" className="input-checkbox" />
+            <input onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
+            name = "category1"
+            checked = {state.category.includes("Women")}
+            type="checkbox" 
+            value = "Women"
+            className="input-checkbox" />
             <p className="checkbox-notify">Women</p>
           </div>
 
           <div className="input-checkbox-container">
-            <input type="checkbox" className="input-checkbox" />
+            <input onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
+            name = "category2"
+            checked = {state.category.includes("Kids")}
+            type="checkbox" 
+            value = "Kids"
+            className="input-checkbox" />
             <p className="checkbox-notify">Kids</p>
           </div>
 
           <div className="input-checkbox-container">
-            <input type="checkbox" className="input-checkbox" />
+            <input onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
+            name = "category3"
+            value = "Best-sellers"
+            checked = {state.category.includes("Best-sellers")}
+            type="checkbox" 
+            className="input-checkbox" />
             <p className="checkbox-notify">Best-sellers</p>
           </div>
         </div>

@@ -16,6 +16,7 @@ const ProductListing = () => {
     rateBy: null,
     inStock: false,
     fastDelivery: false,
+    category: [] // we pass an empty array here so that multiple categories can be put in an array (for us to be able to select multiple categories)
     // priceRange: 981
   };
 
@@ -23,9 +24,10 @@ const ProductListing = () => {
 
   const productReducer = (state, action) => {
     // console.log(action);
+
+    console.log(action.payload)
     switch (action.type) {
       case "SORT":
-        // console.log("Kaus");
         return { ...state, sortItemsBy: action.payload };
       case "FILTER_BY_RATINGS":
         return { ...state, rateBy: action.payload };
@@ -33,6 +35,12 @@ const ProductListing = () => {
           return {...state, inStock: action.payload}
       case "FAST_DELIVERY":
         return {...state, fastDelivery: action.payload}
+      case "CATEGORY":
+        const categoryExist = state.category.includes(action.payload)
+
+        console.log(categoryExist, "hi");
+        return categoryExist ? {...state, category: state.category.filter(item => item !== action.payload)}: {...state, category: [...state.category, action.payload]}
+        // return{...state, category: [...state.category, action.payload]} // in order to select multiple filters we just take an array and add any new filter to the ones already present by spreading them.
     }
   };
 
@@ -107,6 +115,22 @@ const ProductListing = () => {
    const fastDeliveryProducts = fastDeliveryItems(inStockProducts, state.fastDelivery) //state.fastdelivery is what we get from the reducer and we render it here and then map the function to be shown in view
 
 
+   //function to filter by category (men, women, kids)
+
+   const categoryItems = (data, category) => {
+
+    if(category.length){
+
+      return [...data].filter((product) => category.includes(product.categoryName)) //here we compare the categoryName present in the db to the category clicked by the user
+    }
+
+    return data;
+   }
+
+   //using the above function and passing arguments to it
+
+
+  const getCategoryItems = categoryItems(fastDeliveryProducts, state.category)
 
 
   return (
@@ -130,7 +154,7 @@ const ProductListing = () => {
           </div>
 
           <div className="item-list">
-            {fastDeliveryProducts.map((item) => (
+            {getCategoryItems.map((item) => (
               <ProductCard key={item._id} productcard={item} />
             ))}
           </div>
