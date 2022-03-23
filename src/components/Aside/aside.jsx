@@ -1,7 +1,7 @@
 import "../../pages/Home/home.css";
 import "../../pages/Product-listing/product-listing.css";
 
-const Aside = ({ dispatchProp, state }) => {
+const Aside = ({ dispatch, state }) => {
   return (
     <>
       <aside className="filter-container flex-column">
@@ -21,6 +21,33 @@ const Aside = ({ dispatchProp, state }) => {
           </div>
           <input min="100" max="1000" step="200" type="range" />
         </div>
+
+        <div className="filter-price flex-column filter-spaces">
+          <h3 className="filter-headings">Filter Products</h3>
+          <div className="input-checkbox-container">
+            <input
+
+            onChange={(e) => dispatch({type: "IN_STOCK", payload: e.target.checked })}
+            name = "availability"
+            type = "checkbox"
+            checked = {state.inStock}
+            className="input-checkbox" />
+            <p className="checkbox-notify">Exclude Out of stock</p>
+          </div>
+
+          <div className="input-checkbox-container">
+            <input
+
+            onChange={(e) => dispatch({type: "FAST_DELIVERY", payload: e.target.checked})}   
+            type="checkbox" 
+            className="input-checkbox"
+            name = "availability"
+            checked = {state.fastDelivery}
+             />
+            <p className="checkbox-notify">Fast Delivery</p>
+          </div>
+        </div>
+
         <div className="filter-category flex-column">
           <h3 className="filter-headings">Category</h3>
           <div className="input-checkbox-container">
@@ -50,7 +77,7 @@ const Aside = ({ dispatchProp, state }) => {
             <label>
               <input
                 onChange={() =>
-                  dispatchProp({
+                  dispatch({
                     type: "FILTER_BY_RATINGS",
                     payload: 4,
                   })
@@ -65,7 +92,7 @@ const Aside = ({ dispatchProp, state }) => {
             <label>
               <input
                 onChange={() =>
-                  dispatchProp({
+                  dispatch({
                     type: "FILTER_BY_RATINGS",
                     payload: 3,
                   })
@@ -80,7 +107,7 @@ const Aside = ({ dispatchProp, state }) => {
             <label>
               <input
                 onChange={() =>
-                  dispatchProp({
+                  dispatch({
                     type: "FILTER_BY_RATINGS",
                     payload: 2,
                   })
@@ -95,7 +122,7 @@ const Aside = ({ dispatchProp, state }) => {
             <label>
               <input
                 onChange={() =>
-                  dispatchProp({
+                  dispatch({
                     type: "FILTER_BY_RATINGS",
                     payload: 1,
                   })
@@ -116,7 +143,7 @@ const Aside = ({ dispatchProp, state }) => {
             <label>
               <input
                 onChange={() =>
-                  dispatchProp({ type: "SORT", payload: "LOW_TO_HIGH" })
+                  dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })
                 }
                 type="radio"
                 name="price"
@@ -128,7 +155,7 @@ const Aside = ({ dispatchProp, state }) => {
             <label>
               <input
                 onChange={() =>
-                  dispatchProp({ type: "SORT", payload: "HIGH_TO_LOW" })
+                  dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })
                 }
                 checked={state.sortItemsBy === "HIGH_TO_LOW"}
                 type="radio"

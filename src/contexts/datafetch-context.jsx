@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState, createContext, useContext } from "react";
 
-const ProductContext = createContext(null);
+const DataContext = createContext(null);
 
-const ProductProvider = ({ children }) => {
+const useProduct = () => useContext(DataContext);
+
+const DataProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
@@ -20,11 +22,11 @@ const ProductProvider = ({ children }) => {
     getProducts();
   }, []);
   return (
-    <ProductContext.Provider value={{ products, error }}>
+    <DataContext.Provider value={{ products, error }}>
       {children}
-    </ProductContext.Provider>
+    </DataContext.Provider>
   );
 };
 
-const useProduct = () => useContext(ProductContext);
-export { ProductProvider, useProduct };
+
+export { DataProvider, useProduct };
