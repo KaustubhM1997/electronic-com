@@ -1,7 +1,10 @@
+import { useProductListing } from "../../contexts/productListing-context";
 import "../../pages/Home/home.css";
 import "../../pages/Product-listing/product-listing.css";
 
-const Aside = ({ dispatch, state }) => {
+const Aside = () => {
+
+  const {state, dispatch} = useProductListing();
   return (
     <>
       <aside className="filter-container flex-column">
