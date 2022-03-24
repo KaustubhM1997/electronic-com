@@ -90,6 +90,7 @@ input {
 
 .card-image {
   display: flex;
+  position: relative;
 }
 
 .card-vertical {
@@ -185,8 +186,8 @@ input {
   border: none;
   color: var(--secondary-color);
   font-weight: bold;
-  position: relative;
-  bottom: 23rem;
+  position: absolute;
+  bottom: 26.2rem;
   left: 0.5rem;
 }
 
