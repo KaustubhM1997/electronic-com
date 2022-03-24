@@ -8,22 +8,22 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "men",
+    categoryName: "Men",
     categoryImg: "/Assets/men-nav.webp",
   },
   {
     _id: uuid(),
-    categoryName: "women",
+    categoryName: "Women",
     categoryImg: "/Assets/women-nav.webp",
   },
   {
     _id: uuid(),
-    categoryName: "kids",
+    categoryName: "Kids",
     categoryImg: "/Assets/kids-nav.webp",
   },
   {
     _id: uuid(),
-    categoryName: "best-sellers",
+    categoryName: "Best-sellers",
     categoryImg: "/Assets/best-seller-nav.jpg",
   },
 ];
