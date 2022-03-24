@@ -41,8 +41,9 @@ const Aside = () => {
             name = "availability"
             type = "checkbox"
             checked = {state.inStock}
+            id = "out_of_stock"
             className="input-checkbox" />
-            <p className="checkbox-notify">Exclude Out of stock</p>
+           <label for="out_of_stock"> <p className="checkbox-notify">Exclude Out of stock</p></label>
           </div>
 
           <div className="input-checkbox-container">
@@ -52,9 +53,10 @@ const Aside = () => {
             type="checkbox" 
             className="input-checkbox"
             name = "availability"
+            id = "fast_delivery"
             checked = {state.fastDelivery}
              />
-            <p className="checkbox-notify">Fast Delivery</p>
+            <label for = "fast_delivery"><p className="checkbox-notify">Fast Delivery</p></label>
           </div>
         </div>
 
@@ -67,8 +69,9 @@ const Aside = () => {
             checked = {state.category.includes("Men")}
             type="checkbox" 
             value = "Men"
+            id = "men"
             className="input-checkbox" />
-            <p className="checkbox-notify">Men</p>
+            <label for="men"><p className="checkbox-notify">Men</p></label>
           </div>
 
           <div className="input-checkbox-container">
@@ -77,8 +80,9 @@ const Aside = () => {
             checked = {state.category.includes("Women")}
             type="checkbox" 
             value = "Women"
+            id = "women"
             className="input-checkbox" />
-            <p className="checkbox-notify">Women</p>
+            <label for = "women"><p className="checkbox-notify">Women</p></label>
           </div>
 
           <div className="input-checkbox-container">
@@ -87,8 +91,9 @@ const Aside = () => {
             checked = {state.category.includes("Kids")}
             type="checkbox" 
             value = "Kids"
+            id = "kids"
             className="input-checkbox" />
-            <p className="checkbox-notify">Kids</p>
+            <label for="kids"><p className="checkbox-notify">Kids</p></label>
           </div>
 
           <div className="input-checkbox-container">
@@ -97,8 +102,9 @@ const Aside = () => {
             value = "Best-sellers"
             checked = {state.category.includes("Best-sellers")}
             type="checkbox" 
+            id = "best-seller"
             className="input-checkbox" />
-            <p className="checkbox-notify">Best-sellers</p>
+            <label for = "best-seller"><p className="checkbox-notify">Best-sellers</p></label> 
           </div>
         </div>
 
