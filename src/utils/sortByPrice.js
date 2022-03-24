@@ -4,7 +4,11 @@ import { useProduct } from "../contexts/datafetch-context";
 
 
 
+const { products} = useProduct();
+
   const getSortedItems = (productData, sortItemsBy) => {
+
+    
 
     if (sortItemsBy === "LOW_TO_HIGH") {
       return [...productData].sort((item1, item2) => {
@@ -20,7 +24,7 @@ import { useProduct } from "../contexts/datafetch-context";
     return productData;
   };
 
-  const {products} = useProduct();
+  
 
   const getSortedList = getSortedItems(products, state.sortItemsBy); // 1
 
