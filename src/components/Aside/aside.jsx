@@ -61,7 +61,6 @@ const Aside = () => {
         <div className="filter-category flex-column">
           <h3 className="filter-headings">Category</h3>
           <div className="input-checkbox-container">
-            {/* {console.log(state.category)} */}
             <input 
             onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
             name = "category"
