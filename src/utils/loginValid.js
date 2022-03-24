@@ -1,36 +1,44 @@
-const emailFormat =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-const passwordFormat = /^(?=.*\d)(?=.*[a-zA-Z]).{6,10}$/;
+// Figure out a way to include this in your code
 
 
-const LoginValid = {userData} => {
+// const emailFormat =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-    const {email, password} = userData;
+// const passwordFormat = /^(?=.*\d)(?=.*[a-zA-Z]).{6,10}$/;
 
-    const err = {}
 
-    //when no email is put
+// //we catch the errors here
+
+
+// const LoginValid = (userData) => {
+
+//     const {email, password} = userData;
+
+//     //initializing the error object
+
+//     const err = {}
+
+//     //when no email is put
     
 
-    if(!email.match(emailFormat)){
+//     if(!email.match(emailFormat)){
 
-        err.email = "Enter a valid email";
-    }
+//         err.email = "Enter a valid email";
+//     }
 
-    //when no password is put
+//     //when no password is put
 
-    if(!password){
+//     if(!password){
 
-        err.password = "Enter valid password";
-    }
+//         err.password = "Enter valid password";
+//     }
 
-    if(password && !password.match(passwordFormat)){
+//     if(password && !password.match(passwordFormat)){
 
-        err.password = "Too small! Should contain atleast one character, one digit, and length between 6 to 10"
+//         err.password = "Too small! Should contain atleast one character, one digit, and length between 6 to 10"
 
-    }
+//     }
 
-    return err;
-}
+//     return err;
+// }
 
-export {LoginValid}
+// export {LoginValid}

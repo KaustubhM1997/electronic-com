@@ -12,7 +12,7 @@
 
 .login-container {
 
-  margin-top: 8rem;
+  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   height: 70vh;
@@ -79,6 +79,8 @@
 .btn-container {
 
   margin-top: 0.5rem;
+  overflow: hidden;
+  text-align: center;
 }
 
 
@@ -93,7 +95,22 @@
   cursor: pointer;
 }
 
-.login-btn:hover {
+.login-btn-test {
+
+  padding: 0.5rem 4rem;
+  color: var(--color-white);
+  background-color: var(--secondary-color);
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  align-items: center;
+}
+
+
+
+
+.login-btn:hover, .login-btn-test:hover {
 
   background-color: var(--button-hover);
 }

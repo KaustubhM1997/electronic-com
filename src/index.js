@@ -17,7 +17,7 @@ ReactDOM.render(
       <DataProvider>
         <ProductProvider>
           <AuthProvider>
-            <App />
+          <App />
           </AuthProvider>
         </ProductProvider>
       </DataProvider>

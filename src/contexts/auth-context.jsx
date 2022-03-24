@@ -1,32 +1,24 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useContext } from "react/cjs/react.development";
+import { createContext, useState } from "react";
 
+const AuthContext = createContext(null);
 
-
-const Authcontext = createContext();
-
-
-const useAuth = () => useContext(Authcontext);
-
+const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({ token: ""}); // using this so that the user can access private routes with the help of token
-  const token = localStorage.getItem("token");
-  const [showpassword, setShowPassword] = useState(false);
+  //setting the initial Auth and fetching token from the backend
 
-  useEffect(() => {
-    if (token) {
-      setAuth({ token: true });
-    } else {
-      setAuth({ token: false });
-    }
-  }, [token]);
+  const [auth, setAuth] = useState({
+    Authenticated: localStorage.getItem("TOKEN") ? true : false, // to check whether the token is present or not
+
+    token: localStorage.getItem("TOKEN") || "",
+  }); // this condition will give the token to the user to access private routes if already loggen in or would just return an empty string
 
   return (
-    <Authcontext.Provider
-      value={{ auth, setAuth, showpassword, setShowPassword }}
-    >
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
-    </Authcontext.Provider>
+    </AuthContext.Provider>
   );
 };
+
 export { useAuth, AuthProvider };
