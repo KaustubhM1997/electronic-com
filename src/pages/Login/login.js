@@ -24,6 +24,9 @@ const Login = () => {
     password: "adarshbalika",
   });
 
+  
+  // test creds: adarshbalika@gmail.com, adarshbalika
+
   const loginHandler = async () => {
     try {
       //setting the auth value
@@ -75,7 +78,7 @@ const Login = () => {
             placeholder="kaustubh@gmail.com"
             type="email"
             value={input.email}
-            onChange={(e) => setInput({ ...value, email: e.target.value })}
+            onChange={(e) => setInput({...input, email: e.target.value })}
           />
         </div>
 
@@ -86,7 +89,7 @@ const Login = () => {
             placeholder="********"
             type="password"
             value={input.password}
-            onChange={(e) => setInput({ ...value, password: e.target.value })}
+            onChange={(e) => setInput({...input, password: e.target.value })}
           />
         </div>
 
