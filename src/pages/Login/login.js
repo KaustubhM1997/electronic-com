@@ -2,8 +2,8 @@ import "./login.css";
 import { React } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import {useAuth } from "../../contexts/auth-context";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../contexts/auth-context";
 
 const Login = () => {
   // <!-- LOGIN CARD -->
@@ -12,7 +12,7 @@ const Login = () => {
 
   //to navigate to a specific page after login and to catch errors
 
-  const {setAuth} = useAuth();
+  const { setAuth } = useAuth();
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
@@ -23,8 +23,6 @@ const Login = () => {
     email: "adarshbalika@gmail.com",
     password: "adarshbalika",
   });
-
- 
 
   const loginHandler = async () => {
     try {
@@ -61,9 +59,9 @@ const Login = () => {
       }));
       navigate("/");
     } catch (errors) {
-    //   console.log(errors);
+      //   console.log(errors);
 
-    //   console.log(localStorage);
+      //   console.log(localStorage);
 
       setErrors(errors.response.data.createError); // we get the postion this from above for status code 500
     }
@@ -109,10 +107,9 @@ const Login = () => {
 
         <div class="new-account">
           <p>
-            {" "}
-            <a className="text" href="/pages/authentication-pages/signup.html">
+            <Link className="text" to="/signup-page">
               Create New Account
-            </a>{" "}
+            </Link>
           </p>
         </div>
       </div>
