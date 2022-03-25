@@ -87,15 +87,26 @@ body {
   border: none;
 }
 
+.cta {
+
+  border: none;
+  background-color: var(--badge-background);
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+
+}
+
 .button {
   border: none;
   background-color: var(--badge-background);
   padding: 0.4rem 0.8rem;
   border-radius: 2rem;
   cursor: pointer;
+  
 }
 
-.button:hover {
+.button:hover, .cta:hover {
   background-color: var(--button-hover);
 }
 

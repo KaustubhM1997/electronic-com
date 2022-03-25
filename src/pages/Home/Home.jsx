@@ -14,7 +14,7 @@ const Home = () => {
           alt="banner-img"
         />
 
-        <button className="button primary">
+        <button className="cta primary">
           <Link className="login" to="/product-listing">
             Shop Now
           </Link>
