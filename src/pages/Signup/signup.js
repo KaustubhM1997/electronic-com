@@ -7,8 +7,12 @@ import axios from "axios";
 const Signup = () => {
   // <!-- Signup CARD -->
 
-  const [initialValue, setInitialValue] =
-    useState({ name: "", email: "", password: "", confirmPassword: "" });
+  const [initialValue, setInitialValue] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -61,7 +65,9 @@ const Signup = () => {
             placeholder="Kaustubh Manglurkar"
             value={initialValue.name}
             type="text"
-            onChange={(e) => setInitialValue({ ...initialValue, name: e.target.value })}
+            onChange={(e) =>
+              setInitialValue({ ...initialValue, name: e.target.value })
+            }
           />
         </div>
 
@@ -72,7 +78,9 @@ const Signup = () => {
             placeholder="kaustubh@gmail.com"
             type="email"
             value={initialValue.email}
-            onChange={(e) => setInitialValue({ ...initialValue, email: e.target.value })}
+            onChange={(e) =>
+              setInitialValue({ ...initialValue, email: e.target.value })
+            }
           />
         </div>
 
@@ -94,7 +102,10 @@ const Signup = () => {
           <input
             value={initialValue.confirmaPassword}
             onChange={(e) =>
-              setInitialValue({ ...initialValue, confirmPassword: e.target.value })
+              setInitialValue({
+                ...initialValue,
+                confirmPassword: e.target.value,
+              })
             }
             class="login-input"
             placeholder="********"

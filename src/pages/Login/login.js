@@ -59,10 +59,6 @@ const Login = () => {
       }));
       navigate("/");
     } catch (errors) {
-      //   console.log(errors);
-
-      //   console.log(localStorage);
-
       setErrors(errors.response.data.createError); // we get the postion this from above for status code 500
     }
   };

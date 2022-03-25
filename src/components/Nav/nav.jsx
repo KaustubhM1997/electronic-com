@@ -22,8 +22,6 @@ const Nav = () => {
         <input className="search" placeholder="Search" type="search" />
       </div>
 
-      {console.log(Authenticated)}
-
       <ul className="nav-pills">
         {!Authenticated && <button className="nav-item button">
           <NavLink className="login" to="/login-page">
