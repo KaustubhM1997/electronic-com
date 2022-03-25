@@ -1,5 +1,4 @@
 import "./signup.css";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useState } from "react";
