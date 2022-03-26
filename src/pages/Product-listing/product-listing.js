@@ -72,3 +72,5 @@ const ProductListing = () => {
 };
 
 export { ProductListing };
+
+const wishlistDb = [{obj1: 4}]
