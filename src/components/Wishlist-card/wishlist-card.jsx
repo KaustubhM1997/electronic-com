@@ -34,19 +34,19 @@ const WishlistCard = ({ productcard }) => {
   return (
 
   
-      <div className="card-image">
-        <div className="card-vertical">
-          <div className="card-vertical-info flex-column">
+      <div className="card-image-wishlist">
+        <div className="card-vertical-wishlist">
+          <div className="card-vertical-info-wishlist flex-column-wishlist">
             <img
-              className="img-responsive adjust-image"
+              className="img-responsive adjust-image-wishlist"
               src={productImg}
               alt="shopping-item"
             />
-            <p className="card-text">{title}</p>
+            <p className="card-text-wishlist">{title}</p>
 
-            <div className="rating-badge">
+            <div className="rating-badge-wishlist">
               {rating}
-              <span className="star-icon">
+              <span className="star-icon-wislist">
                 <i class="fa-solid fa-star"></i>
               </span>
             </div>

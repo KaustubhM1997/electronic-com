@@ -48,20 +48,22 @@ const Wishlist = () => {
     state: { wishlist }
   } = useWishlist(); //destructuring the wishlist db from state
 
-  console.log(wishlist, "hi");
+  // console.log(wishlist, "hi");
 
   return (
-    <>
-      <div className="item-heading">
+    
+    <div className="main-wrapper-wishlist">
+      <div className="item-heading-wishlist">
         <h3>My Wishlist</h3>
       </div>
 
-      <div class="item-list">
+      <div class="item-list-wishlist">
         {wishlist.map((item) => { 
        return  <WishlistCard productcard={item} />;
         })}
       </div>
-    </>
+      </div>
+    
   );
 };
 
