@@ -7,11 +7,11 @@ import { ParentRouter } from "./Routes/routes";
 function App() {
 
   return (
-    <>
+    <div className="App">
     <Nav/>
     <ParentRouter/> 
     <Footer/>
-    </>
+    </div>
   );
 }
 

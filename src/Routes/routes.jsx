@@ -7,10 +7,12 @@ import { Cart } from "../pages/Cart/cart";
 import { Login } from "../pages/Login/login";
 import { Signup } from "../pages/Signup/signup";
 import Mockman from "mockman-js";
+import "../Routes/routes.css"
 
 
 const ParentRouter = () => {
   return (
+    <div className="parent-routes">
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/product-listing" element={<ProductListing />}></Route>
@@ -20,6 +22,7 @@ const ParentRouter = () => {
       <Route path="/mockman" element={<Mockman />} />
       <Route path="/signup-page" element = {<Signup/>} ></Route>
     </Routes>
+    </div>
   );
 };
 

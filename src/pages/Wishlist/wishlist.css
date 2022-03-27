@@ -24,22 +24,24 @@
 .item-heading-wishlist {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
   column-gap: 0.5rem;
   text-decoration: underline var(--secondary-color);
 }
 
 .item-list-wishlist {
   display: grid;
-  /* height: 100vh; */
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 17rem));
   margin-top: 1rem;
-  width: 100%;
+  
 }
 
 .card-image-wishlist {
   display: flex;
+  width: 100%;
+  max-width: 17rem;
+  place-self: center;
  
 }
 
