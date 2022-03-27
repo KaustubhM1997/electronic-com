@@ -8,6 +8,7 @@ import { DataProvider } from "../src/contexts/datafetch-context";
 import { ProductProvider } from "./contexts/productListing-context";
 import { AuthProvider } from "./contexts/auth-context";
 import { WishlistProvider } from "./contexts/wishlist-context";
+import { CartProvider } from "./contexts/cart-context";
 
 // Call make Server
 makeServer();
@@ -19,7 +20,9 @@ ReactDOM.render(
         <DataProvider>
           <ProductProvider>
             <WishlistProvider>
-              <App />
+              <CartProvider>
+                <App />
+              </CartProvider>
             </WishlistProvider>
           </ProductProvider>
         </DataProvider>

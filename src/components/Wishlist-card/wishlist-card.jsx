@@ -3,9 +3,15 @@ import { useAuth } from "../../contexts/auth-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import "../../pages/Product-listing/product-listing.css";
 import axios from "axios";
+import { useCart } from "../../contexts/cart-context";
 
 const WishlistCard = ({ productcard }) => {
   const { title, price, rating, productImg } = productcard;
+
+  const {
+    state: { cartlist },
+    dispatch: cartDispatch,
+  } = useCart();
 
   const {
     auth: { Authenticated, token },
@@ -31,7 +37,35 @@ const WishlistCard = ({ productcard }) => {
     }
   };
 
-  console.log(productcard);
+  // console.log(productcard);
+
+  //this gets triggered when add to cart button is clicked
+
+  const addToCartHandler = async (productcard) => {
+    if (Authenticated) {
+      try {
+        if (cartList.find((item) => item._id === product._id)) {
+          console.log("The item is already present in the cart");
+        } else {
+          const response = await axios.post(
+            "/api/user/cart",
+            { product: productcard },
+            {
+              headers: { authorization: token },
+            }
+          );
+          cartDispatch({
+            type: "ADD_TO_CART",
+            payload: [...response.data.cart],
+          });
+        }
+      } catch (errors) {
+        console.log(errors);
+      }
+    } else {
+      navigate("/login-page");
+    }
+  };
 
   return (
     <div className="card-image-wishlist">
@@ -55,7 +89,9 @@ const WishlistCard = ({ productcard }) => {
             <span className="text-line-through">7,999</span>
             <span className="discount-percent">40%</span>
           </p>
-          <button className="btn btn-secondary">Add to Cart</button>
+          {Authenticated && cartlist.find((item) => item._id === productcard._id) ?
+           (<button onClick={() => navigate("/cart-management")} className="btn btn-secondary">Go to Cart</button>): 
+           <button onClick={() => addToCartHandler(productcard)} className="btn btn-secondary">Add to Cart</button>}
           <span
             onClick={() => deleteFromWishlist(productcard._id)}
             className="card-heart-icon"

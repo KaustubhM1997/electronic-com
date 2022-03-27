@@ -9,8 +9,6 @@ const Wishlist = () => {
     state: { wishlist },
   } = useWishlist(); //destructuring the wishlist db from state
 
-  // console.log(wishlist, "hi");
-
   return (
     <div className="main-wrapper-wishlist">
       <div className="item-heading-wishlist">
