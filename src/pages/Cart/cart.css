@@ -1,7 +1,7 @@
-/* @import url(../../main.css);
+/* GIVE DIFFERENT names so that the product listing page doesn't mess up */
 
 
-GIVE DIFFERENT names so that the product listing page doesn't mess up
+@import url(../../main.css);
 
 :root {
   --light-grey: #9ca3af;
@@ -11,21 +11,21 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   --border-default: 1px solid;
 }
 
-.main-container {
+.main-container-cart {
   display: flex;
   margin-top: 2rem;
   gap: 5rem;
   justify-content: space-evenly;
 }
 
-.item-heading {
+.item-heading-cart {
   text-decoration: underline var(--secondary-color);
   margin-top: 5rem;
   margin-left: 1.3rem;
   font-size: 1.2rem;
 }
 
-.product-card {
+.product-card-cart {
   display: flex;
   margin-top: 2rem;
   border: var(--border-default);
@@ -37,7 +37,7 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   width: 24rem;
 }
 
-.image-section {
+.image-section-cart {
   display: flex;
   width: 4rem;
   height: 13rem;
@@ -47,7 +47,7 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   border-radius: 5px;
 }
 
-.product-details {
+.product-details-cart {
   display: flex;
   flex-direction: column;
   margin-left: 0.7rem;
@@ -59,30 +59,30 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   font-size: 1.3rem;
 }
 
-.product-price {
+.product-price-cart {
   margin-top: 0.5rem;
 }
 
-.discount-price {
+.discount-price-cart {
   font-weight: bold;
   font-size: 1rem;
 }
 
-.original-price {
+.original-price-cart {
   font-weight: bold;
   color: var(--light-grey);
   text-decoration: line-through var(--light-grey);
 }
 
-.quantity {
+.quantity-cart {
   margin-top: 1.5rem;
 }
 
-.qty-input {
+.qty-input-cart {
   width: 2rem;
 }
 
-.btn {
+.btn-cart {
   border-radius: 50%;
   border: none;
   height: 1.5rem;
@@ -99,7 +99,7 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   background-color: var(--button-hover);
 }
 
-.cta-buttons {
+.cta-buttons-cart {
   margin-top: 2rem;
   position: relative;
 }
@@ -115,7 +115,7 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   cursor: pointer;
 }
 
-.secondary {
+.secondary-cart {
   position: absolute;
   bottom: 10rem;
   font-size: 1.3rem;
@@ -127,7 +127,7 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   color: var(--secondary-color);
 }
 
-.price-details {
+.price-details-cart {
   border: var(--border-default);
   width: 17rem;
   height: 18rem;
@@ -137,20 +137,20 @@ GIVE DIFFERENT names so that the product listing page doesn't mess up
   padding: 1rem;
 }
 
-.price-spec {
+.price-spec-cart {
   display: flex;
   justify-content: space-between;
   margin: 1rem 0rem;
   font-weight: bold;
 }
 
-.text-green {
+.text-green-cart {
   color: var(--text-green);
 }
 
-.btn-order {
+.btn-order-cart {
   margin-top: 2rem;
   padding: 1rem 1.7rem;
   font-size: 1rem;
   margin-left: 3.7rem;
-} */
+}

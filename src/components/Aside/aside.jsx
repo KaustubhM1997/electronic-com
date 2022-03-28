@@ -111,7 +111,7 @@ const Aside = () => {
         <div className="filter-rating flex-column filter-spaces">
           <h3 className="filter-headings">Rating</h3>
           <form className="rating-options flex-column">
-            <label>
+            <label> 
               <input
                 onChange={() =>
                   dispatch({
@@ -123,9 +123,11 @@ const Aside = () => {
                 type="radio"
                 name="rating"
                 value="4 Stars & above"
+                className="radio-input"
               />
               4 Stars & above
             </label>
+             
             <label>
               <input
                 onChange={() =>

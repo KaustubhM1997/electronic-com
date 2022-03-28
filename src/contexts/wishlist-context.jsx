@@ -46,10 +46,13 @@ const WishlistProvider = ({ children }) => {
             headers: {
               authorization: token,
             },
+
+            
           });
+          // console.log(response);
           setErrors("");
 
-          console.log(response);
+          // console.log(response);
 
           //firing our payload
 

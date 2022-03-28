@@ -1,73 +1,179 @@
+import axios from "axios";
+import { useAuth } from "../../contexts/auth-context";
+import { useCart } from "../../contexts/cart-context";
+import { useWishlist } from "../../contexts/wishlist-context";
+import "../../pages/Cart/cart.css";
 
+const CartCard = ({ productcard }) => {
+  const { title, price, productImg } = productcard;
 
-import "../../pages/Cart/cart.css"
+  const {
+    dispatch,
+    state: { cartlist },
+  } = useCart();
+  const {
+    state: { wishlist },
+    dispatch: wishlistDispatch,
+  } = useWishlist();
+  const {
+    auth: { token },
+  } = useAuth();
 
+  //handler to move items back to wishlist
 
-const CartCard = () => {
+  const moveToWishlistHandler = async (productcard) => {
+    try {
+      if (wishlist.find((item) => item._id === product._id)) {
+        console.log("The product is already in wishlist");
+      } else {
+        const response = await axios.post(
+          "/api/user/wishlist",
+          {
+            product: productcard,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+
+        wishlistDispatch({
+          type: "MOVE_TO_WISHLIST",
+          payload: [...response.data.wishlist],
+        });
+      }
+    } catch (errors) {
+      console.log(errors);
+    }
+  };
+
+  //handler to delete items from cart
+
+  const deleteFromCartHandler = async (id) => {
+    try {
+      const response = await axios.delete(`/api/user/cart/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      dispatch({ type: "ADD_TO_CART", payload: [...response.data.cart] });
+    } catch (errors) {
+      console.log(errors.message);
+    }
+  };
+
+  // function to increase cart quantity
+
+  const increaseQuantity = async (id) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${id}`,
+        {
+          action: {
+            type: "increment",
+          },
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
+
+      console.log(response.data.cart);
+    } catch (errors) {
+      console.log(errors.message);
+    }
+  };
+
+  //funtion to decrease cart quantity
+
+  const decreaseQuantity = async (id) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${id}`,
+        {
+          action: {
+            type: "decrement",
+          },
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+
+      dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
+    } catch (errors) {
+      console.log(errors.message);
+    }
+  };
   return (
-    <div className="main-container">
-      {/* <!-- Cart card --> */}
-
-      <div className="product-card">
-        <div className="image-section">
-          <img
-            className="cart-img"
-            src="/assets/img-product.jpg"
-            alt="cart-item"
-          />
-        </div>
-        <div className="product-details">
-          <span className="card-heading">Nike Air Jordan</span>
-          <div className="product-price">
-            <span className="discount-price">₹7200</span>
-            <small className="original-price">₹9500</small>
-          </div>
-
-          <div className="quantity">
-            <button className="btn">-</button>
-            <input value="2" className="qty-input" type="number" />
-            <button className="btn">+</button>
-          </div>
-
-          <div className="cta-buttons">
-            <button className="btn-primary">Move to Wishlist</button>
-            <span className="card-heart-icon secondary">
-              <i className="fa-solid fa-xmark"></i>
-            </span>
-          </div>
-        </div>
+    <>
+      <div class="item-heading-cart">
+        <h3>Your Cart</h3>
       </div>
 
-      {/* <!-- Price card --> */}
+      <div className="main-container-cart">
+        {/* <!-- Cart card --> */}
 
-      <div className="price-details">
-        <div className="price-spec">
-          <span>Price (2 Items)</span>
-          <span>₹19,000</span>
+        <div className="product-card-cart">
+          <div className="image-section-cart">
+            <img className="cart-img" src={productImg} alt="cart-item" />
+          </div>
+          <div className="product-details-cart">
+            <span className="card-heading">{title}</span>
+            <div className="product-price-cart">
+              <span className="discount-price-cart">₹7200</span>
+              <small className="original-price-cart">{price}</small>
+            </div>
+
+            <div className="quantity-cart">
+              <button
+                onClick={() => {
+                  if (productcard.qty === 1) {
+                    deleteFromCartHandler(productcard._id);
+                  } else {
+                    decreaseQuantity(productcard._id);
+                  }
+                }}
+                className="btn-cart"
+              >
+                -
+              </button>
+              <input className="qty-input-cart" type="number" />
+              {productcard.qty}
+              <button
+                onClick={() => increaseQuantity(productcard._id)}
+                className="btn-cart"
+              >
+                +
+              </button>
+            </div>
+
+            <div className="cta-buttons-cart">
+              <button
+                onClick={() => moveToWishlistHandler(productcard)}
+                className="btn-primary"
+              >
+                Move to Wishlist
+              </button>
+              <span
+                onClick={() => deleteFromCartHandler(productcard._id)}
+                className="card-heart-icon secondary-cart"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="price-spec">
-          <span>Discount</span>
-          <span className="text-green">- ₹4,600</span>
-        </div>
 
-        <div className="price-spec">
-          <span>Delivery</span>
-          <span className="text-green">FREE</span>
-        </div>
-
-        <hr class="theme-break" />
-
-        <div className="price-spec">
-          <span>Total Amount</span>
-          <span>₹14,400</span>
-        </div>
-
-        <hr class="theme-break" />
-
-        <button className="btn-order">Place Order</button>
       </div>
-    </div>
+    </>
   );
 };
 

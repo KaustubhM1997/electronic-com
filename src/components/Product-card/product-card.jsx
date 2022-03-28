@@ -92,7 +92,11 @@ const ProductCard = ({ productcard }) => {
             headers: { authorization: token },
           }
         );
-        cartDispatch({ type: "ADD_TO_CART", payload: [...response.data.cart] });
+
+        console.log(response);
+
+  
+        cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
       } catch (errors) {
         console.log(errors);
       }
@@ -129,7 +133,9 @@ const ProductCard = ({ productcard }) => {
           </p>
 
           {/* If the item id present in the cart is equal to the one in the product page then we take the users to the cart page or else show the add to cart button */}
-          {Authenticated && cartlist.find((item) => item._id === productcard._id) ? (<button onClick={() => navigate("/cart-management")} className="btn btn-secondary">Go to Cart</button>): <button onClick={() => addToCartHandler(productcard)} className="btn btn-secondary">Add to Cart</button>}
+          {Authenticated && cartlist.find((item) => item._id === productcard._id) ?
+           (<button onClick={() => navigate("/cart-management")} className="btn btn-secondary">Go to Cart</button>): 
+           <button onClick={() => addToCartHandler(productcard)} className="btn btn-secondary">Add to Cart</button>}
           
 
           {/* The first span checks whether the product is already present in the wishlist array, if yes then on click it removes from wishlisht. Meaning the heart color would already be filled here */}

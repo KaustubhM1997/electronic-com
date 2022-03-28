@@ -59,6 +59,17 @@ input {
   margin-top: 1rem;
 }
 
+/* .radio-input {
+
+  display: flex;
+  column-gap: 0.6rem;
+}
+
+.aside-label {
+
+  margin-top: 0.2rem;
+} */
+
 .checkbox-notify {
   font-size: 0.9rem;
   padding-top: 1.1rem;
