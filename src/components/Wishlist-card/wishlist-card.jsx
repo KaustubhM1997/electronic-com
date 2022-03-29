@@ -60,7 +60,8 @@ const WishlistCard = ({ productcard }) => {
             onClick={() => deleteFromWishlist(productcard._id)}
             className="card-heart-icon"
           >
-            <i className="fa-regular fa-heart"></i>
+             <i class="fa-solid fa-xmark"></i>
+             {/* <i class="fa-solid fa-heart"></i> */}
           </span>
         </div>
       </div>

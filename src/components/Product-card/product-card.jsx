@@ -122,10 +122,10 @@ const ProductCard = ({productcard}) => { //destructuring the product card object
 
            {Authenticated &&  wishlist.find((item) => item._id === productcard._id) ?(<span onClick = {() => removeFromWishlistHandler(productcard._id)} className="card-heart-icon"> 
             
-            <i className="fa-regular fa-heart"></i>
+           <i class="fa-solid fa-heart"></i> 
           </span>): (<span onClick = {() => addToWishlistHandler(productcard)} className="card-heart-icon"> 
             
-            <i className="fa-regular fa-heart"></i>
+          <i className="fa-regular fa-heart"></i>
           </span>) } 
 
             {/* // the 2nd span triggers the handler when heart icon is clicked and pass our productcard(products) that we've got from product listing */}
