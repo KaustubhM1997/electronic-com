@@ -58,7 +58,7 @@ const WishlistProvider = ({ children }) => {
 
           dispatch({
             type: "MOVE_TO_WISHLIST",
-            payload: [...response.data.wishlist],
+            payload: response.data.wishlist,
           });
         } catch (errors) {
           console.log(errors);
