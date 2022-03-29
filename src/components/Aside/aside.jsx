@@ -164,7 +164,7 @@ const Aside = () => {
               4 Stars & above
             </label>
 
-            <label>
+            <label className="rating-label">
               <input
                 onChange={() =>
                   dispatch({
@@ -179,7 +179,7 @@ const Aside = () => {
               />
               3 Stars & above
             </label>
-            <label>
+            <label className="rating-label">
               <input
                 onChange={() =>
                   dispatch({
@@ -194,7 +194,7 @@ const Aside = () => {
               />
               2 Stars & above
             </label>
-            <label>
+            <label className="rating-label">
               <input
                 onChange={() =>
                   dispatch({
@@ -215,7 +215,7 @@ const Aside = () => {
         <div className="filter-sortby flex-column filter-spaces">
           <h3 className="filter-headings">Sort by</h3>
           <form className="rating-options flex-column">
-            <label>
+            <label className="rating-label">
               <input
                 onChange={() =>
                   dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })
@@ -227,7 +227,7 @@ const Aside = () => {
               />
               Price: Low to High
             </label>
-            <label>
+            <label className="rating-label">
               <input
                 onChange={() =>
                   dispatch({ type: "SORT", payload: "HIGH_TO_LOW" })

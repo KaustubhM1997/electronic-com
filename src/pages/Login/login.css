@@ -24,12 +24,15 @@
   box-shadow: var(--box-shadow);
   padding-left: 2rem;
   border-radius: 5px;
+  position: relative;
 
 }
 
 .login-header {
 
   margin: 1.5rem 0 1rem 9rem;
+  display: flex;
+  position: absolute;
 }
 
 .login-details {
@@ -38,6 +41,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 1.7rem;
+  margin-top: 4rem;
 
 }
 
@@ -53,7 +57,9 @@
   border: none;
   border: 1px solid var(--light-grey);
   padding: 0.4rem;
-  width: 85%;
+  width: 100%;
+  margin-left: -0.1rem;
+  
 }
 
 .forgot-password {
@@ -74,6 +80,7 @@
   margin-left: 1.9rem;
   color: var(--secondary-color);
   cursor: pointer;
+
 }
 
 .btn-container {
@@ -81,6 +88,7 @@
   margin-top: 0.5rem;
   overflow: hidden;
   text-align: center;
+  margin-top: 1rem;
 }
 
 
@@ -93,6 +101,7 @@
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
+  
 }
 
 .login-btn-test {
@@ -119,6 +128,8 @@
 
   margin-left: 4.2rem;
   margin-top: 0.5rem;
+  position: absolute;
+  margin-top: 19rem;
 }
 
 .new-account .text {

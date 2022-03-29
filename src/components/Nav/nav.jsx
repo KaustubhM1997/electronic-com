@@ -46,7 +46,9 @@ const Nav = () => {
             <i className="fa-regular fa-heart icon">
               {Authenticated && wishlist.length > 0 ? (
                 <span className="notif-cart">{wishlist.length}</span>
-              ) : ""}
+              ) : (
+                null
+              )}
             </i>
           </NavLink>
         </div>

@@ -87,7 +87,7 @@ const ProductCard = ({ productcard }) => {
             src={productImg}
             alt="shopping-item"
           />
-          <p className="card-text">{title}</p>
+          <p className="card-text clamp">{title}</p>
 
           <div className="rating-badge">
             {rating}
