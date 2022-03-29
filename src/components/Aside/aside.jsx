@@ -3,14 +3,17 @@ import "../../pages/Home/home.css";
 import "../../pages/Product-listing/product-listing.css";
 
 const Aside = () => {
-
-  const {state, dispatch} = useProductListing();
+  const { state, dispatch } = useProductListing();
   return (
     <>
       <aside className="filter-container flex-column">
         <div className="filter-header filter-spaces">
           <h3 className="filter-headings">Filters</h3>
-          <a onClick={() => dispatch({type: "CLEAR"})} className="filter-clear" href="#">
+          <a
+            onClick={() => dispatch({ type: "CLEAR" })}
+            className="filter-clear"
+            href="#"
+          >
             Clear
           </a>
         </div>
@@ -23,88 +26,121 @@ const Aside = () => {
             <h3 className="filter-headings">1990</h3>
           </div>
           <input
-
-          onChange = {(e) => dispatch({type: "PRICE_RANGE", payload: Number(e.target.value)})}
-          value = {state.priceRange}
-          min="120" 
-          max="1990" 
-          step="55" 
-          type="range" />
+            onChange={(e) =>
+              dispatch({ type: "PRICE_RANGE", payload: Number(e.target.value) })
+            }
+            value={state.priceRange}
+            min="120"
+            max="1990"
+            step="55"
+            type="range"
+          />
         </div>
 
         <div className="filter-price flex-column filter-spaces">
           <h3 className="filter-headings">Filter Products</h3>
           <div className="input-checkbox-container">
             <input
-
-            onChange={(e) => dispatch({type: "IN_STOCK", payload: e.target.checked })}
-            name = "availability"
-            type = "checkbox"
-            checked = {state.inStock}
-            id = "out_of_stock"
-            className="input-checkbox" />
-           <label for="out_of_stock"> <p className="checkbox-notify">Exclude Out of stock</p></label>
+              onChange={(e) =>
+                dispatch({ type: "IN_STOCK", payload: e.target.checked })
+              }
+              name="availability"
+              type="checkbox"
+              checked={state.inStock}
+              id="out_of_stock"
+              className="input-checkbox"
+            />
+            <label for="out_of_stock">
+              {" "}
+              <p className="checkbox-notify">Exclude Out of stock</p>
+            </label>
           </div>
 
           <div className="input-checkbox-container">
             <input
-
-            onChange={(e) => dispatch({type: "FAST_DELIVERY", payload: e.target.checked})}   
-            type="checkbox" 
-            className="input-checkbox"
-            name = "availability"
-            id = "fast_delivery"
-            checked = {state.fastDelivery}
-             />
-            <label for = "fast_delivery"><p className="checkbox-notify">Fast Delivery</p></label>
+              onChange={(e) =>
+                dispatch({ type: "FAST_DELIVERY", payload: e.target.checked })
+              }
+              type="checkbox"
+              className="input-checkbox"
+              name="availability"
+              id="fast_delivery"
+              checked={state.fastDelivery}
+            />
+            <label for="fast_delivery">
+              <p className="checkbox-notify">Fast Delivery</p>
+            </label>
           </div>
         </div>
 
         <div className="filter-category flex-column">
           <h3 className="filter-headings">Category</h3>
           <div className="input-checkbox-container">
-            <input 
-            onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
-            name = "category"
-            checked = {state.category.includes("Men")}
-            type="checkbox" 
-            value = "Men"
-            id = "men"
-            className="input-checkbox" />
-            <label for="men"><p className="checkbox-notify">Men</p></label>
+            <input
+              onChange={(e) =>
+                dispatch({ type: "CATEGORY", payload: e.target.value })
+              }
+              name="category"
+              checked={state.category.includes("Men")}
+              type="checkbox"
+              value="Men"
+              id="men"
+              className="input-checkbox"
+            />
+            <label for="men">
+              <p className="checkbox-notify">Men</p>
+            </label>
           </div>
 
           <div className="input-checkbox-container">
-            <input onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
-            name = "category1"
-            checked = {state.category.includes("Women")}
-            type="checkbox" 
-            value = "Women"
-            id = "women"
-            className="input-checkbox" />
-            <label for = "women"><p className="checkbox-notify">Women</p></label>
+            <input
+              onChange={(e) =>
+                dispatch({ type: "CATEGORY", payload: e.target.value })
+              }
+              name="category1"
+              checked={state.category.includes("Women")}
+              type="checkbox"
+              value="Women"
+              id="women"
+              className="input-checkbox"
+            />
+            <label for="women">
+              <p className="checkbox-notify">Women</p>
+            </label>
           </div>
 
           <div className="input-checkbox-container">
-            <input onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
-            name = "category2"
-            checked = {state.category.includes("Kids")}
-            type="checkbox" 
-            value = "Kids"
-            id = "kids"
-            className="input-checkbox" />
-            <label for="kids"><p className="checkbox-notify">Kids</p></label>
+            <input
+              onChange={(e) =>
+                dispatch({ type: "CATEGORY", payload: e.target.value })
+              }
+              name="category2"
+              checked={state.category.includes("Kids")}
+              type="checkbox"
+              value="Kids"
+              id="kids"
+              className="input-checkbox"
+            />
+            <label for="kids">
+              <p className="checkbox-notify">Kids</p>
+            </label>
           </div>
 
           <div className="input-checkbox-container">
-            <input onChange={(e) => dispatch({type: "CATEGORY", payload: e.target.value})}
-            name = "category3"
-            value = "Best-sellers"
-            checked = {state.category.includes("Best-sellers")}
-            type="checkbox" 
-            id = "best-seller"
-            className="input-checkbox" />
-            <label for = "best-seller"><p className="checkbox-notify">Best-sellers</p></label> 
+            <input
+              onChange={(e) =>
+                dispatch({ type: "CATEGORY", payload: e.target.value })
+              }
+              name="category3"
+              value="Best-sellers"
+              checked={state.category.includes("Best-sellers")}
+              type="checkbox"
+              id="best-seller"
+              className="input-checkbox"
+            />
+            <label for="best-seller">
+              <p className="checkbox-notify">Best-sellers</p>
+            </label>
           </div>
         </div>
 
@@ -112,7 +148,8 @@ const Aside = () => {
           <h3 className="filter-headings">Rating</h3>
           <form className="rating-options flex-column">
             <label className="rating-label">
-            <input className="rating-input"
+              <input
+                className="rating-input"
                 onChange={() =>
                   dispatch({
                     type: "FILTER_BY_RATINGS",
@@ -126,7 +163,7 @@ const Aside = () => {
               />
               4 Stars & above
             </label>
-           
+
             <label>
               <input
                 onChange={() =>
