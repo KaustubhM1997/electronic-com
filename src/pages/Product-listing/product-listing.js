@@ -73,4 +73,4 @@ const ProductListing = () => {
 
 export { ProductListing };
 
-const wishlistDb = [{ obj1: 4 }];
+// const wishlistDb = [{ obj1: 4 }];
