@@ -44,9 +44,9 @@ const Nav = () => {
         <div className="badge-element nav-item">
           <NavLink className="nav-icon" to="/wishlist">
             <i className="fa-regular fa-heart icon">
-              <span className="notif-cart">
-                {Authenticated ? wishlist.length : ""}
-              </span>
+              {Authenticated && wishlist.length > 0 ? (
+                <span className="notif-cart">{wishlist.length}</span>
+              ) : ""}
             </i>
           </NavLink>
         </div>
