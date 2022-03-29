@@ -2,11 +2,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../../pages/Home/home.css";
 import { signOut } from "../../services/signoutService";
 import { useAuth } from "../../contexts/auth-context"
+import { useWishlist } from "../../contexts/wishlist-context";
 
 const Nav = () => {
 
   const navigate = useNavigate();
   const {auth: {Authenticated}, setAuth} = useAuth();
+
+  const {state: {wishlist}} = useWishlist()
    
   {/* destructuring setauth and auth and further destructuring Authenticated from auth */}
   return (
@@ -14,8 +17,9 @@ const Nav = () => {
       <div className="nav-brand">
         <NavLink className="header-style" to="/">
           NOZAMA
+          <i className="fa-solid fa-arrow-left-long nav-logo"></i>
         </NavLink>
-        <i className="fa-solid fa-arrow-left-long"></i>
+        
       </div>
 
       <div className="input-search">
@@ -31,19 +35,20 @@ const Nav = () => {
 
 
         <div className="badge-element nav-item">
-          <NavLink to="/wishlist">
-            <i className="fa-regular fa-heart icon"></i>
+          <NavLink className="nav-icon" to="/wishlist">
+            <i className="fa-regular fa-heart icon"><span className="notif-cart">{Authenticated ? wishlist.length: ""}</span></i>
+            
           </NavLink>
 
-          <span className="notif-cart">12</span>
+          
         </div>
 
         <div className="badge-element nav-item">
           <NavLink to="/cart-management">
-            <i className="fa-solid fa-cart-arrow-down icon"></i>
+            <i className="fa-solid fa-cart-arrow-down icon"><span className="notif-cart">7</span></i>
           </NavLink>
 
-          <span className="notif-cart">7</span>
+          
         </div>
 
         {Authenticated && <button className="nav-item button" onClick={() =>signOut(setAuth, navigate)}>

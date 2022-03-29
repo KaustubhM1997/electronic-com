@@ -111,8 +111,8 @@ const Aside = () => {
         <div className="filter-rating flex-column filter-spaces">
           <h3 className="filter-headings">Rating</h3>
           <form className="rating-options flex-column">
-            <label>
-              <input
+            <label className="rating-label">
+            <input className="rating-input"
                 onChange={() =>
                   dispatch({
                     type: "FILTER_BY_RATINGS",
@@ -126,6 +126,7 @@ const Aside = () => {
               />
               4 Stars & above
             </label>
+           
             <label>
               <input
                 onChange={() =>

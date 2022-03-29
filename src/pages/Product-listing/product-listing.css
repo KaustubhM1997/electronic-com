@@ -44,6 +44,12 @@
   justify-content: space-between;
 }
 
+/* .filter-ratings {
+
+  display: flex;
+  justify-content: space-between;
+} */
+
 input {
   font: inherit;
 }
@@ -64,9 +70,21 @@ input {
   padding-top: 1.1rem;
 }
 
-.rating-options label {
+/* .rating-options label {
   font-size: 0.9rem;
+} */
+
+/* .rating-options {
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
+
+.rating-label {
+
+  position: absolute;
+} */
 
 .item-heading {
   display: flex;
@@ -175,7 +193,7 @@ input {
 }
 
 .rating-badge {
-  border: 0.5px solid;
+  /* border: 0.5px solid; */
   width: 3.2rem;
   padding: 0.2rem;
   display: flex;
@@ -185,9 +203,11 @@ input {
   border: none;
   color: var(--secondary-color);
   font-weight: bold;
-  position: relative;
-  bottom: 23rem;
+  /* position: relative; */
+  /* bottom: 26rem; */
   left: 0.5rem;
+  position: absolute;
+  top: 0.45rem;
 }
 
 .star-icon {

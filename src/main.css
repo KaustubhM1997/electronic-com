@@ -50,12 +50,14 @@ body {
 
 .icon {
   color: var(--color-white);
+  position: relative;
 }
 
 .nav-item {
   margin: 0rem 1rem;
   font-size: 1.2rem;
   list-style: none;
+  /* position: relative; */
 }
 
 .login {
@@ -123,10 +125,17 @@ body {
 .notif-cart {
   position: absolute;
   bottom: 1.2rem;
-  left: 1.2rem;
-  border-radius: 50%;
+  left: 1rem;
+  border-radius: 70%;
   background-color: var(--badge-background);
   font-weight: bold;
-  padding: 0.1rem 0.4rem;
-  font-size: small;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.7rem;
+}
+
+.nav-logo {
+
+  position: absolute;
+  margin-left: 0.5rem;
+  top: 1.1rem;
 }
