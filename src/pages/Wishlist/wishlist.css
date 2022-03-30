@@ -1,5 +1,90 @@
 @import url(../../main.css);
+@import url(../../main.css);
 
-.title {
-  margin-top: 8rem;
+.main-wrapper-wishlist {
+  display: grid;
+  min-height: 50vh;
+  grid-gap: 2rem;
+  width: 100%;
+
+  /* The aside will take 1fr and the rest (content) will take 7fr */
+  grid-template-columns: repeat(1, 5fr);
+  /* grid-template-areas: "header header" "aside main"; */
+  margin-top: 5rem;
+  padding: 0 1.5rem 0.5rem 1rem;
+}
+
+/* on the card */
+
+/* max-width: 25rem; width: 100% */
+
+.item-heading-wishlist {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  column-gap: 0.5rem;
+  text-decoration: underline var(--secondary-color);
+}
+
+.item-list-wishlist {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 17rem));
+  margin-top: 1rem;
+}
+
+.card-image-wishlist {
+  display: flex;
+  width: 100%;
+  max-width: 17rem;
+  place-self: center;
+}
+
+.card-vertical-wishlist {
+  position: relative;
+  box-shadow: 0px 0px 5px 5px var(--card-box-shadow);
+  border-radius: 5px;
+}
+
+.card-vertical-info-wishlist {
+  position: relative;
+  justify-content: flex-start;
+  margin: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.flex-column-wishlist {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wishlist .adjust-image-wishlist {
+  height: 48vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-text-wishlist {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.9rem 0 0 0.5rem;
+}
+
+.rating-badge-wishlist {
+  width: 3.2rem;
+  padding: 0.2rem;
+  display: flex;
+  border-radius: 1.5rem;
+  background-color: var(--color-white);
+  border: none;
+  color: var(--secondary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+.star-icon-wislist {
+  margin-left: 0.2rem;
+  color: var(--secondary-color);
 }
