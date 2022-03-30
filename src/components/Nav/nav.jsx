@@ -3,7 +3,6 @@ import "../../pages/Home/home.css";
 import { signOut } from "../../services/signoutService";
 import { useAuth } from "../../contexts/auth-context";
 import { useWishlist } from "../../contexts/wishlist-context";
-import { unstable_createPortal } from "react-dom";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -42,7 +41,7 @@ const Nav = () => {
         )}
 
         <div className="badge-element nav-item">
-          <NavLink className="nav-icon" to="/wishlist">
+          <NavLink className="nav-icon" to= {Authenticated ? "/wishlist": "/login-page"}>
             <i className="fa-regular fa-heart icon">
               {Authenticated && wishlist.length > 0 ? (
                 <span className="notif-cart">{wishlist.length}</span>
