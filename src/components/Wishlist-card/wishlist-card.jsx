@@ -31,7 +31,7 @@ const WishlistCard = ({ productcard }) => {
     }
   };
 
-  console.log(productcard);
+  // console.log(productcard);
 
   return (
     <div className="card-image-wishlist">
@@ -60,8 +60,7 @@ const WishlistCard = ({ productcard }) => {
             onClick={() => deleteFromWishlist(productcard._id)}
             className="card-heart-icon"
           >
-             <i class="fa-solid fa-xmark"></i>
-             {/* <i class="fa-solid fa-heart"></i> */}
+            <i class="fa-solid fa-xmark"></i>
           </span>
         </div>
       </div>

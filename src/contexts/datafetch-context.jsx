@@ -28,5 +28,4 @@ const DataProvider = ({ children }) => {
   );
 };
 
-
 export { DataProvider, useProduct };

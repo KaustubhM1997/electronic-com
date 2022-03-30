@@ -1,6 +1,7 @@
 import { useProductListing } from "../../contexts/productListing-context";
 import "../../pages/Home/home.css";
 import "../../pages/Product-listing/product-listing.css";
+import { Link } from "react-router-dom";
 
 const Aside = () => {
   const { state, dispatch } = useProductListing();
@@ -9,13 +10,13 @@ const Aside = () => {
       <aside className="filter-container flex-column">
         <div className="filter-header filter-spaces">
           <h3 className="filter-headings">Filters</h3>
-          <a
+          <span
             onClick={() => dispatch({ type: "CLEAR" })}
             className="filter-clear"
             href="#"
           >
             Clear
-          </a>
+          </span>
         </div>
 
         <div className="filter-price flex-column filter-spaces">
@@ -26,6 +27,7 @@ const Aside = () => {
             <h3 className="filter-headings">1990</h3>
           </div>
           <input
+            className="slider-range"
             onChange={(e) =>
               dispatch({ type: "PRICE_RANGE", payload: Number(e.target.value) })
             }
@@ -42,7 +44,10 @@ const Aside = () => {
           <div className="input-checkbox-container">
             <input
               onChange={(e) =>
-                dispatch({ type: "IN_STOCK", payload: e.target.checked })
+                dispatch({
+                  type: "IN_STOCK",
+                  payload: e.target.checked,
+                })
               }
               name="availability"
               type="checkbox"
@@ -80,7 +85,7 @@ const Aside = () => {
               onChange={(e) =>
                 dispatch({ type: "CATEGORY", payload: e.target.value })
               }
-              name="category"
+              name="MEN"
               checked={state.category.includes("Men")}
               type="checkbox"
               value="Men"
@@ -97,7 +102,7 @@ const Aside = () => {
               onChange={(e) =>
                 dispatch({ type: "CATEGORY", payload: e.target.value })
               }
-              name="category1"
+              name="WOMEN"
               checked={state.category.includes("Women")}
               type="checkbox"
               value="Women"
@@ -114,7 +119,7 @@ const Aside = () => {
               onChange={(e) =>
                 dispatch({ type: "CATEGORY", payload: e.target.value })
               }
-              name="category2"
+              name="KIDS"
               checked={state.category.includes("Kids")}
               type="checkbox"
               value="Kids"
@@ -131,7 +136,7 @@ const Aside = () => {
               onChange={(e) =>
                 dispatch({ type: "CATEGORY", payload: e.target.value })
               }
-              name="category3"
+              name="BEST-SELLER"
               value="Best-sellers"
               checked={state.category.includes("Best-sellers")}
               type="checkbox"
