@@ -113,65 +113,57 @@ const CartCard = ({ productcard }) => {
   };
   return (
     <>
-      <div class="item-heading-cart">
-        <h3>Your Cart</h3>
-      </div>
+      {/* <!-- Cart card --> */}
 
-      <div className="main-container-cart">
-        {/* <!-- Cart card --> */}
-
-        <div className="product-card-cart">
-          <div className="image-section-cart">
-            <img className="cart-img" src={productImg} alt="cart-item" />
+      <div className="product-card-cart">
+        <div className="image-section-cart">
+          <img className="cart-img" src={productImg} alt="cart-item" />
+        </div>
+        <div className="product-details-cart">
+          <span className="card-heading">{title}</span>
+          <div className="product-price-cart">
+            <span className="discount-price-cart">{price}</span>
+            <small className="text-line-through-cart">₹7,999</small>
           </div>
-          <div className="product-details-cart">
-            <span className="card-heading">{title}</span>
-            <div className="product-price-cart">
-              <span className="discount-price-cart">₹7200</span>
-              <small className="original-price-cart">{price}</small>
-            </div>
 
-            <div className="quantity-cart">
-              <button
-                onClick={() => {
-                  if (productcard.qty === 1) {
-                    deleteFromCartHandler(productcard._id);
-                  } else {
-                    decreaseQuantity(productcard._id);
-                  }
-                }}
-                className="btn-cart"
-              >
-                -
-              </button>
-              <input className="qty-input-cart" type="number" />
-              {productcard.qty}
-              <button
-                onClick={() => increaseQuantity(productcard._id)}
-                className="btn-cart"
-              >
-                +
-              </button>
-            </div>
+          <div className="quantity-cart">
+            <button
+              onClick={() => {
+                if (productcard.qty === 1) {
+                  deleteFromCartHandler(productcard._id);
+                } else {
+                  decreaseQuantity(productcard._id);
+                }
+              }}
+              className="btn-cart"
+            >
+              -
+            </button>
+            {/* <input className="qty-input-cart" type="number" /> */}
+            {productcard.qty}
+            <button
+              onClick={() => increaseQuantity(productcard._id)}
+              className="btn-cart"
+            >
+              +
+            </button>
+          </div>
 
-            <div className="cta-buttons-cart">
-              <button
-                onClick={() => moveToWishlistHandler(productcard)}
-                className="btn-primary"
-              >
-                Move to Wishlist
-              </button>
-              <span
-                onClick={() => deleteFromCartHandler(productcard._id)}
-                className="card-heart-icon secondary-cart"
-              >
-                <i className="fa-solid fa-xmark"></i>
-              </span>
-            </div>
+          <div className="cta-buttons-cart">
+            <button
+              onClick={() => moveToWishlistHandler(productcard)}
+              className="btn-primary"
+            >
+              Move to Wishlist
+            </button>
+            <span
+              onClick={() => deleteFromCartHandler(productcard._id)}
+              className="card-heart-icon secondary-cart"
+            >
+              <i className="fa-solid fa-xmark"></i>
+            </span>
           </div>
         </div>
-
-
       </div>
     </>
   );

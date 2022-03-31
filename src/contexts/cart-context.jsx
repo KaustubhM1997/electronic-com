@@ -10,8 +10,6 @@ const initialState = {
   cartlist: [], //we pass an empty array as the initial state as initially the cart would be empty
 };
 
-
-
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
@@ -23,10 +21,9 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = ({ children }) => {
-
   const {
     auth: { Authenticated, token },
-  } = useAuth();   // a function that returns something should be inside a functional component
+  } = useAuth(); // a function that returns something should be inside a functional component
 
   // console.log("Hi")
   const [state, dispatch] = useReducer(cartReducer, initialState);
@@ -44,7 +41,7 @@ const CartProvider = ({ children }) => {
             },
           });
 
-            console.log(response);
+          console.log(response);
 
           dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         } catch (errors) {

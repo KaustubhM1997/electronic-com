@@ -1,14 +1,23 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../pages/Home/home.css";
 import { signOut } from "../../services/signoutService";
-import { useAuth } from "../../contexts/auth-context"
+import { useAuth } from "../../contexts/auth-context";
+import { useCart } from "../../contexts/cart-context";
 
 const Nav = () => {
-
   const navigate = useNavigate();
-  const {auth: {Authenticated}, setAuth} = useAuth();
-   
-  {/* destructuring setauth and auth and further destructuring Authenticated from auth */}
+  const {
+    auth: { Authenticated },
+    setAuth,
+  } = useAuth();
+
+  const {
+    state: { cartlist },
+  } = useCart();
+
+  {
+    /* destructuring setauth and auth and further destructuring Authenticated from auth */
+  }
   return (
     <nav className="navigation-container">
       <div className="nav-brand">
@@ -23,12 +32,13 @@ const Nav = () => {
       </div>
 
       <ul className="nav-pills">
-        {!Authenticated && <button className="nav-item button">
-          <NavLink className="login" to="/login-page">
-            Login
-          </NavLink>
-        </button>}
-
+        {!Authenticated && (
+          <button className="nav-item button">
+            <NavLink className="login" to="/login-page">
+              Login
+            </NavLink>
+          </button>
+        )}
 
         <div className="badge-element nav-item">
           <NavLink to="/wishlist">
@@ -39,24 +49,26 @@ const Nav = () => {
         </div>
 
         <div className="badge-element nav-item">
-          <NavLink to="/cart-management">
-            <i className="fa-solid fa-cart-arrow-down icon"></i>
+          <NavLink to={Authenticated ? "/cart-management" : "/login-page"}>
+            <i className="fa-solid fa-cart-arrow-down icon">
+              {Authenticated && cartlist.length > 0 ? (
+                <span className="notif-cart">{cartlist.length}</span>
+              ) : null}
+            </i>
           </NavLink>
-
-          <span className="notif-cart">7</span>
         </div>
 
-        {Authenticated && <button className="nav-item button" onClick={() =>signOut(setAuth, navigate)}>
-          <span className="login" >
-            Logout
-          </span>
-        </button>}
+        {Authenticated && (
+          <button
+            className="nav-item button"
+            onClick={() => signOut(setAuth, navigate)}
+          >
+            <span className="login">Logout</span>
+          </button>
+        )}
       </ul>
     </nav>
   );
-
-
-
 };
 
 export { Nav };
