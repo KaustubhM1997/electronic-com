@@ -87,9 +87,22 @@ const WishlistCard = ({ productcard }) => {
             <span className="text-line-through">7,999</span>
             <span className="discount-percent">40%</span>
           </p>
-          {Authenticated && cartlist.find((item) => item._id === productcard._id) ?
-           (<button onClick={() => navigate("/cart-management")} className="btn btn-secondary">Go to Cart</button>): 
-           <button onClick={() => addToCartHandler(productcard)} className="btn btn-secondary">Add to Cart</button>}
+          {Authenticated &&
+          cartlist.find((item) => item._id === productcard._id) ? (
+            <button
+              onClick={() => navigate("/cart-management")}
+              className="btn btn-secondary"
+            >
+              Go to Cart
+            </button>
+          ) : (
+            <button
+              onClick={() => addToCartHandler(productcard)}
+              className="btn btn-secondary"
+            >
+              Add to Cart
+            </button>
+          )}
           <span
             onClick={() => deleteFromWishlist(productcard._id)}
             className="card-heart-icon"

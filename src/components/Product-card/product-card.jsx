@@ -1,10 +1,7 @@
-
-import axios from "axios";
 import { useAuth } from "../../contexts/auth-context";
 import "../../pages/Product-listing/product-listing.css";
-
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import { useState } from "react";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
@@ -23,15 +20,15 @@ const ProductCard = ({ productcard }) => {
     auth: { Authenticated, token },
   } = useAuth();
 
- const {state: {cartlist}, dispatch: cartDispatch} = useCart();
- //destructuring cartlist from initial state and renaminf the dispatch from cart contexr as cartDispatch
+  const {
+    state: { cartlist },
+    dispatch: cartDispatch,
+  } = useCart(); //destructuring cartlist from initial state and renaminf the dispatch from cart contexr as cartDispatch
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
 
   //this gets triggered when the heart icon is clicked below and the item is not present in the wishlist array
-
-  // console.log(productcard);
 
   const addToWishlistHandler = async (productcard) => {
     //as soon as the user logs in, the pre-exisiting wishlist items are shown and then anything the user adds from product paage is added below when dispatch fires
@@ -39,7 +36,7 @@ const ProductCard = ({ productcard }) => {
       try {
         const response = await axios.post(
           "/api/user/wishlist",
-          { product: productcard }, //product is the predefined key that we pass the productcard value object to
+          { product: productcard }, //product is the predefined key that we pass the producttcard value object to
           {
             headers: { authorization: token },
           }
@@ -70,7 +67,6 @@ const ProductCard = ({ productcard }) => {
         const response = await axios.delete(`/api/user/wishlist/${id}`, {
           headers: { authorization: token },
         });
-
         setErrors("");
         dispatch({
           type: "MOVE_TO_WISHLIST",
@@ -83,7 +79,6 @@ const ProductCard = ({ productcard }) => {
       navigate("/login-page");
     }
   };
-
 
   //this gets triggered when add to cart button is clicked
 
@@ -98,7 +93,7 @@ const ProductCard = ({ productcard }) => {
           }
         );
 
-        // console.log(response);
+        console.log(response);
 
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
       } catch (errors) {
@@ -136,8 +131,8 @@ const ProductCard = ({ productcard }) => {
             <span className="discount-percent">40%</span>
           </p>
 
-           {/* If the item id present in the cart is equal to the one in the product page then we take the users to the cart page or else show the add to cart button */}
-           {Authenticated &&
+          {/* If the item id present in the cart is equal to the one in the product page then we take the users to the cart page or else show the add to cart button */}
+          {Authenticated &&
           cartlist.find((item) => item._id === productcard._id) ? (
             <button
               onClick={() => navigate("/cart-management")}
@@ -154,7 +149,6 @@ const ProductCard = ({ productcard }) => {
             </button>
           )}
 
-
           {/* The first span checks whether the product is already present in the wishlist array, if yes then on click it removes from wishlisht. Meaning the heart color would already be filled here */}
 
           {Authenticated &&
@@ -163,7 +157,7 @@ const ProductCard = ({ productcard }) => {
               onClick={() => removeFromWishlistHandler(productcard._id)}
               className="card-heart-icon"
             >
-              <i class="fa-regular fa-heart"></i>
+              <i className="fa-solid fa-heart"></i>
             </span>
           ) : (
             <span

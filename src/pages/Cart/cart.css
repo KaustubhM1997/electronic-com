@@ -63,7 +63,7 @@
   width: 100%;
 }
 
-.card-heading {
+.card-heading-cart {
   margin-top: 1.5rem;
   font-weight: bold;
   color: var(--badge-background);

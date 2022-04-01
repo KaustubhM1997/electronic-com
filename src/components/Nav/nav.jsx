@@ -11,20 +11,16 @@ const Nav = () => {
     auth: { Authenticated },
     setAuth,
   } = useAuth();
-      /* destructuring setauth and auth and further destructuring Authenticated from auth */
-
+  /* destructuring setauth and auth and further destructuring Authenticated from auth */
 
   const {
     state: { wishlist },
   } = useWishlist();
 
-
   const {
     state: { cartlist },
   } = useCart();
 
-  
-  
   return (
     <nav className="navigation-container">
       <div className="nav-brand">
@@ -48,7 +44,10 @@ const Nav = () => {
         )}
 
         <div className="badge-element nav-item">
-          <NavLink className="nav-icon" to= {Authenticated ? "/wishlist": "/login-page"}>
+          <NavLink
+            className="nav-icon"
+            to={Authenticated ? "/wishlist" : "/login-page"}
+          >
             <i className="fa-regular fa-heart icon">
               {Authenticated && wishlist.length > 0 ? (
                 <span className="notif-cart">{wishlist.length}</span>
@@ -58,7 +57,7 @@ const Nav = () => {
         </div>
 
         <div className="badge-element nav-item">
-        <NavLink to={Authenticated ? "/cart-management" : "/login-page"}>
+          <NavLink to={Authenticated ? "/cart-management" : "/login-page"}>
             <i className="fa-solid fa-cart-arrow-down icon">
               {Authenticated && cartlist.length > 0 ? (
                 <span className="notif-cart">{cartlist.length}</span>

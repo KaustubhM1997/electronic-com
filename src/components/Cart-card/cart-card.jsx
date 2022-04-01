@@ -120,7 +120,7 @@ const CartCard = ({ productcard }) => {
           <img className="cart-img" src={productImg} alt="cart-item" />
         </div>
         <div className="product-details-cart">
-          <span className="card-heading">{title}</span>
+          <span className="card-heading-cart">{title}</span>
           <div className="product-price-cart">
             <span className="discount-price-cart">{price}</span>
             <small className="text-line-through-cart">₹7,999</small>
