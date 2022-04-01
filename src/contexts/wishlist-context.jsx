@@ -25,7 +25,7 @@ const WishlistProvider = ({ children }) => {
   const [errors, setErrors] = useState("");
 
   const wishListReducer = (state, action) => {
-    console.log(action);
+    // console.log(action);
 
     switch (action.type) {
       case "MOVE_TO_WISHLIST":
@@ -39,7 +39,7 @@ const WishlistProvider = ({ children }) => {
 
   //This is used for us to fetch data from the backend to show data on the Wishlist page. We put this in useffect as we want it to run after the render and whenever the user logs in because it's a private route.
 
-  console.log(Authenticated);
+  // console.log(Authenticated);
 
   useEffect(() => {
     async function getdataWishlist() {
@@ -53,7 +53,7 @@ const WishlistProvider = ({ children }) => {
           });
           setErrors("");
 
-          console.log(response);
+          // console.log(response);
 
           //firing our payload
 

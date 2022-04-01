@@ -15,6 +15,7 @@ const Wishlist = () => {
     <div className="main-wrapper-wishlist">
       <div className="item-heading-wishlist">
         <h3>My Wishlist</h3>
+        <p className="wishlist-quantity"> Items in Wishlist ({wishlist.length})</p>
       </div>
 
       <div class="item-list-wishlist">

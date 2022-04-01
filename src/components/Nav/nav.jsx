@@ -3,6 +3,7 @@ import "../../pages/Home/home.css";
 import { signOut } from "../../services/signoutService";
 import { useAuth } from "../../contexts/auth-context";
 import { useWishlist } from "../../contexts/wishlist-context";
+import { useCart } from "../../contexts/cart-context";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -10,14 +11,20 @@ const Nav = () => {
     auth: { Authenticated },
     setAuth,
   } = useAuth();
+      /* destructuring setauth and auth and further destructuring Authenticated from auth */
+
 
   const {
     state: { wishlist },
   } = useWishlist();
 
-  {
-    /* destructuring setauth and auth and further destructuring Authenticated from auth */
-  }
+
+  const {
+    state: { cartlist },
+  } = useCart();
+
+  
+  
   return (
     <nav className="navigation-container">
       <div className="nav-brand">
@@ -51,9 +58,11 @@ const Nav = () => {
         </div>
 
         <div className="badge-element nav-item">
-          <NavLink to="/cart-management">
+        <NavLink to={Authenticated ? "/cart-management" : "/login-page"}>
             <i className="fa-solid fa-cart-arrow-down icon">
-              <span className="notif-cart">7</span>
+              {Authenticated && cartlist.length > 0 ? (
+                <span className="notif-cart">{cartlist.length}</span>
+              ) : null}
             </i>
           </NavLink>
         </div>
