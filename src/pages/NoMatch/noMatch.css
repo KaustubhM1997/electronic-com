@@ -1,7 +1,7 @@
 .error-header {
   font-size: 3rem;
-
   margin-top: 10rem;
+  font-weight: bold;
 }
 
 .error-text {
