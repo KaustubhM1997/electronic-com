@@ -1,5 +1,5 @@
 import "../App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { ProductListing } from "../pages/Product-listing/product-listing";
 import { Wishlist } from "../pages/Wishlist/wishlist";

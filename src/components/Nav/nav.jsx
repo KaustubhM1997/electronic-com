@@ -24,7 +24,13 @@ const Nav = () => {
   return (
     <nav className="navigation-container">
       <div className="nav-brand">
-        <NavLink className="header-style" to="/">
+        <NavLink style={({isActive}) => {
+
+          return {
+
+            backgroundColor: isActive ? "var(--secondary-color)" : ""
+          }
+        }}   className="header-style" to="/">
           NOZAMA
           <i className="fa-solid fa-arrow-left-long nav-logo"></i>
         </NavLink>
@@ -44,7 +50,13 @@ const Nav = () => {
         )}
 
         <div className="badge-element nav-item">
-          <NavLink
+          <NavLink style={({isActive}) => {
+
+            return {
+
+              backgroundColor: isActive ? "var(--secondary-color)": ""
+            }
+          }}
             className="nav-icon"
             to={Authenticated ? "/wishlist" : "/login-page"}
           >
@@ -57,7 +69,17 @@ const Nav = () => {
         </div>
 
         <div className="badge-element nav-item">
-          <NavLink to={Authenticated ? "/cart-management" : "/login-page"}>
+          <NavLink
+
+          style={({isActive}) => {
+
+            return {
+
+              backgroundColor: isActive ? "var(--secondary-color)": ""
+            }
+          }}
+          
+          to={Authenticated ? "/cart-management" : "/login-page"}>
             <i className="fa-solid fa-cart-arrow-down icon">
               {Authenticated && cartlist.length > 0 ? (
                 <span className="notif-cart">{cartlist.length}</span>
