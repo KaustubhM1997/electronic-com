@@ -29,7 +29,7 @@ const WishlistProvider = ({ children }) => {
 
     switch (action.type) {
       case "MOVE_TO_WISHLIST":
-        return { ...state, wishlist: action.payload };
+        return { ...state, wishlist: action.payload }; // we can do this using useState as well as there's just one action type
     }
   };
 
@@ -59,17 +59,13 @@ const WishlistProvider = ({ children }) => {
 
           dispatch({
             type: "MOVE_TO_WISHLIST",
-            payload: [...response.data.wishlist],
+            payload: [...response.data.wishlist], // we just setdata to state
           });
         } catch (errors) {
           console.log(errors);
         }
-      } else {
-        dispatch({
-          type: "MOVE_TO_WISHLIST",
-          payload: [],
-        });
-      }
+          //we don't need anything in else here because if the user is not logged in then he won't be able to access cart in the first place.
+      } 
     }
 
     getdataWishlist(); //IIFE

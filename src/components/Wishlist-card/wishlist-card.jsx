@@ -5,8 +5,8 @@ import "../../pages/Product-listing/product-listing.css";
 import axios from "axios";
 import { useCart } from "../../contexts/cart-context";
 
-const WishlistCard = ({ productcard }) => {
-  const { title, price, rating, productImg } = productcard;
+const WishlistCard = ({ wishlistItems }) => {
+  const { title, price, rating, productImg, _id } = wishlistItems;
 
   const {
     state: { cartlist },
@@ -16,7 +16,7 @@ const WishlistCard = ({ productcard }) => {
   const {
     auth: { Authenticated, token },
   } = useAuth();
-  const { dispatch: Wishlistdispatch } = useWishlist(); //renaming dispatch for better readibility
+  const { state: {wishlist}, dispatch: Wishlistdispatch } = useWishlist(); //renaming dispatch for better readibility
   const navigate = useNavigate();
   const deleteFromWishlist = async (id) => {
     if (Authenticated) {
@@ -40,15 +40,15 @@ const WishlistCard = ({ productcard }) => {
 
   //this gets triggered when add to cart button is clicked
 
-  const addToCartHandler = async (productcard) => {
+  const addToCartHandler = async (wishlistItems) => {
     if (Authenticated) {
       try {
-        if (cartList.find((item) => item._id === product._id)) {
+        if (cartlist.find((item) => item._id === wishlistItems._id)) {
           console.log("The item is already present in the cart");
         } else {
           const response = await axios.post(
             "/api/user/cart",
-            { product: productcard },
+            { product: wishlistItems },
             {
               headers: { authorization: token },
             }
@@ -87,8 +87,10 @@ const WishlistCard = ({ productcard }) => {
             <span className="text-line-through">7,999</span>
             <span className="discount-percent">40%</span>
           </p>
-          {Authenticated &&
-          cartlist.find((item) => item._id === productcard._id) ? (
+        
+          {
+        cartlist.find((item) => item._id === _id) //we're just comparing the id of the item in cart to the id of the item in wishlist that we got from the prop above
+         ? (  
             <button
               onClick={() => navigate("/cart-management")}
               className="btn btn-secondary"
@@ -97,14 +99,14 @@ const WishlistCard = ({ productcard }) => {
             </button>
           ) : (
             <button
-              onClick={() => addToCartHandler(productcard)}
+              onClick={() => addToCartHandler(wishlistItems)}
               className="btn btn-secondary"
             >
               Add to Cart
             </button>
           )}
           <span
-            onClick={() => deleteFromWishlist(productcard._id)}
+            onClick={() => deleteFromWishlist(wishlistItems._id)}
             className="card-heart-icon"
           >
             <i className="fa-regular fa-heart"></i>

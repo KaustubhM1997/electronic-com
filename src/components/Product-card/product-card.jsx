@@ -36,7 +36,7 @@ const ProductCard = ({ productcard }) => {
       try {
         const response = await axios.post(
           "/api/user/wishlist",
-          { product: productcard }, //product is the predefined key that we pass the producttcard value object to
+          { product: productcard }, //product is the predefined key that we pass the producttcard value object to. We're just added the productcard (product clciked by the user) to the backend
           {
             headers: { authorization: token },
           }
@@ -93,7 +93,7 @@ const ProductCard = ({ productcard }) => {
           }
         );
 
-        console.log(response);
+        // console.log(response);
 
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
       } catch (errors) {

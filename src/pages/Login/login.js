@@ -44,7 +44,7 @@ const Login = () => {
       //we wait for the user to click on login
 
       const response = await axios.post(`/api/auth/login`, {
-        email: input.email,
+        email: input.email, ///se send these values to the backend that we get from the user to check whether this user exists. The test credentials are adarsh balika, this user exists on the backend. 
         password: input.password,
       });
 
@@ -61,7 +61,7 @@ const Login = () => {
       }));
       navigate("/");
     } catch (errors) {
-      setErrors(errors.response.data.createError); // we get the postion this from above for status code 500
+      setErrors(errors.response.data.createError); // we get the position this from above for status code 500
     }
   };
 
@@ -72,7 +72,7 @@ const Login = () => {
       <div className="login-details">
         <div className="login-subdetails">
           <p className="subdetails-header">Email address</p>
-          <input
+          <input required
             className="login-input"
             placeholder="kaustubh@gmail.com"
             type="email"
@@ -83,7 +83,7 @@ const Login = () => {
 
         <div className="login-subdetails">
           <p className="subdetails-header">Password</p>
-          <input
+          <input required
             className="login-input"
             placeholder="********"
             type="password"

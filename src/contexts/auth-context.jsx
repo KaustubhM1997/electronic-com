@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     Authenticated: localStorage.getItem("TOKEN") ? true : false, // to check whether the token is present or not
 
     token: localStorage.getItem("TOKEN") || "",
-  }); // this condition will give the token to the user to access private routes if already loggen in or would just return an empty string
+  }); // this condition will give the token to the user to access private routes if the token is present/the user has signed up, or else it would return nothingh/empty string
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>

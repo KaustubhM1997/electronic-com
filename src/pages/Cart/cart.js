@@ -25,7 +25,7 @@ const Cart = () => {
             cartlist.length > 0
               ? cartlist.map((item) => {
                   //whenever there's an item in the cart (cartlist), just map its details on the cartcard component
-                  return <CartCard key={item._id} productcard={item} />;
+                  return <CartCard key={item._id} cartItems={item} />;
                 })
               : ""
             //  (

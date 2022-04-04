@@ -1,10 +1,12 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "./auth-context";
 
 const CartContext = createContext(null);
 
 const useCart = () => useContext(CartContext);
+
 
 const initialState = {
   cartlist: [], //we pass an empty array as the initial state as initially the cart would be empty
@@ -13,7 +15,7 @@ const initialState = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
-      return { ...state, cartlist: action.payload }; //TRY REMOVING the array around action.payload
+      return { ...state, cartlist: action.payload }; 
     }
     default:
       return state;
@@ -21,6 +23,8 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = ({ children }) => {
+
+  const navigate = useNavigate();
   const {
     auth: { Authenticated, token },
   } = useAuth(); // a function that returns something should be inside a functional component
@@ -41,16 +45,17 @@ const CartProvider = ({ children }) => {
             },
           });
 
-          console.log(response);
+          // console.log(response);
 
           dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         } catch (errors) {
           console.log(errors);
         }
-      } else {
-        dispatch({ type: "ADD_TO_CART", payload: [] }); //if the user didn't add any items to cart then previous time then we return an empty array
-      }
+
+        //we don't need anything in else here because if the user is not logged in then he won't be able to access cart in the first place.
+    
     }
+  }
 
     getCartItems();
   }, [token]); //calling this only when the token changes

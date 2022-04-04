@@ -1,11 +1,12 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useCart } from "../../contexts/cart-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import "../../pages/Cart/cart.css";
 
-const CartCard = ({ productcard }) => {
-  const { title, price, productImg } = productcard;
+const CartCard = ({ cartItems }) => {
+  const { title, price, productImg, _id } = cartItems;
 
   const {
     dispatch,
@@ -18,18 +19,19 @@ const CartCard = ({ productcard }) => {
   const {
     auth: { token },
   } = useAuth();
+  const navigate = useNavigate();
 
   //handler to move items back to wishlist
 
-  const moveToWishlistHandler = async (productcard) => {
+  const moveToWishlistHandler = async (cartItems) => {
     try {
       if (wishlist.find((item) => item._id === product._id)) {
-        console.log("The product is already in wishlist");
+        // console.log("The product is already in wishlist"); //use react toastify here
       } else {
         const response = await axios.post(
           "/api/user/wishlist",
           {
-            product: productcard,
+            product: cartItems,
           },
           {
             headers: {
@@ -82,7 +84,7 @@ const CartCard = ({ productcard }) => {
       );
       dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
 
-      console.log(response.data.cart);
+      // console.log(response.data.cart);
     } catch (errors) {
       console.log(errors.message);
     }
@@ -129,10 +131,10 @@ const CartCard = ({ productcard }) => {
           <div className="quantity-cart">
             <button
               onClick={() => {
-                if (productcard.qty === 1) {
-                  deleteFromCartHandler(productcard._id);
+                if (cartItems.qty === 1) {
+                  deleteFromCartHandler(cartItems._id);
                 } else {
-                  decreaseQuantity(productcard._id);
+                  decreaseQuantity(cartItems._id);
                 }
               }}
               className="btn-cart"
@@ -140,9 +142,9 @@ const CartCard = ({ productcard }) => {
               -
             </button>
             {/* <input className="qty-input-cart" type="number" /> */}
-            {productcard.qty}
+            {cartItems.qty}
             <button
-              onClick={() => increaseQuantity(productcard._id)}
+              onClick={() => increaseQuantity(cartItems._id)}
               className="btn-cart"
             >
               +
@@ -150,14 +152,20 @@ const CartCard = ({ productcard }) => {
           </div>
 
           <div className="cta-buttons-cart">
-            <button
-              onClick={() => moveToWishlistHandler(productcard)}
+            {wishlist.find((item) => item._id === _id) ? (<button
+              onClick={() => navigate("/wishlist")}
+              className="btn-primary"
+            >
+              Go to Wishlist
+            </button>): <button
+              onClick={() => moveToWishlistHandler(cartItems)}
               className="btn-primary"
             >
               Move to Wishlist
-            </button>
+            </button>}
+            
             <span
-              onClick={() => deleteFromCartHandler(productcard._id)}
+              onClick={() => deleteFromCartHandler(cartItems._id)}
               className="card-heart-icon secondary-cart"
             >
               <i className="fa-solid fa-xmark"></i>

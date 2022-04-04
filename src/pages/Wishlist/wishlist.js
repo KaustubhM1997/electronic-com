@@ -23,7 +23,7 @@ const Wishlist = () => {
 
       <div class="item-list-wishlist">
         {wishlist.map((item) => {
-          return <WishlistCard key={item._id} productcard={item} />;
+          return <WishlistCard key={item._id} wishlistItems={item} />;
         })}
       </div>
     </div>

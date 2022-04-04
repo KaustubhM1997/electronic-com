@@ -55,8 +55,9 @@ const ProductListing = () => {
             <h3>Show All Products</h3>
 
             <p>
-              (Showing {priceRangeItems.length} Products of {products.length}{" "}
+              (Showing {priceRangeItems.length} Products of {products.length}{" "} 
               Products)
+              {/* pricernageitems has all the filtered items and products is the initial products we fetched from db */}
             </p>
           </div>
 

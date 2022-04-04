@@ -12,7 +12,7 @@ const DataProvider = ({ children }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        setError("");
+        // setError("");
         const res = await axios.get("/api/products");
         setProducts(res.data.products);
       } catch (err) {

@@ -1,7 +1,6 @@
 import { useProductListing } from "../../contexts/productListing-context";
 import "../../pages/Home/home.css";
 import "../../pages/Product-listing/product-listing.css";
-import { Link } from "react-router-dom";
 
 const Aside = () => {
   const { state, dispatch } = useProductListing();
@@ -20,7 +19,8 @@ const Aside = () => {
         </div>
 
         <div className="filter-price flex-column filter-spaces">
-          <h3 className="filter-headings">Price: {state.priceRange}</h3>
+          <h3 className="filter-headings">Price: {state.priceRange}</h3> 
+          {/* comes from the initial state */}
           <div className="filter-price-range">
             <h3 className="filter-headings">100</h3>
             <h3 className="filter-headings">1000</h3>
