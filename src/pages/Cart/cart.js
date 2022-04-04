@@ -2,7 +2,6 @@ import React from "react";
 import { CartCard } from "../../components/Cart-card/cart-card";
 import { useCart } from "../../contexts/cart-context";
 import "../Home/home.css";
-
 import "./cart.css";
 
 const Cart = () => {
@@ -14,17 +13,16 @@ const Cart = () => {
 
   return (
     <>
-      <div class="item-heading-cart">
+      <div className="item-heading-cart">
         <h3>My Cart</h3>
         <p className="cart-quantity"> Items in Cart ({cartlist.length})</p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "70fr 30fr" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+      <div className="main-cart-wrapper">
+        <div className="cartlist-wrapper">
           {
             cartlist.length > 0
               ? cartlist.map((item) => {
-                  //whenever there's an item in the cart (cartlist), just map its details on the cartcard component
                   return <CartCard key={item._id} cartItems={item} />;
                 })
               : ""
@@ -38,16 +36,11 @@ const Cart = () => {
 
         {/* Using setstate, I can put a flag here to put a condition where if cartlist items are less than 0 then the price card should disppear as well, and should only appear when carlist items are greater than 0  */}
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
+        <div className="price-details-wrapper"
+          
         >
-          {/* // style = {{display: "flex", justifyContent: "flex-start", alignItems: "center", */}
 
-          <div style={{ marginTop: "2rem" }} className="price-details-cart">
+          <div className="price-details-cart">
             <div className="price-spec-cart">
               <span>Price (2 Items)</span>
               <span>₹19,000</span>
