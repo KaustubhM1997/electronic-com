@@ -13,14 +13,14 @@ const productReducer = (state, action) => {
     case "FAST_DELIVERY":
       return { ...state, fastDelivery: action.payload };
     case "CATEGORY":
-      const categoryExist = state.category.includes(action.payload);
+      const categoryExist = state.category.includes(action.payload); //this stores the payload fired by the user
 
       return categoryExist
         ? {
             ...state,
-            category: state.category.filter((item) => item !== action.payload),
+            category: state.category.filter((item) => item !== action.payload), // to uncheck the category if clicked again
           }
-        : { ...state, category: [...state.category, action.payload] };
+        : { ...state, category: [...state.category, action.payload] }; //if the item checked already checked is not the same as the new item fired then we add it or it get selected.
     // in order to select multiple filters we just take an array and add any new filter to the ones already present by spreading them. We also put a condition to uncheck the ones that are selected
 
     case "PRICE_RANGE":

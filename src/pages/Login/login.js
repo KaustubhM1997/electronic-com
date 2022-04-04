@@ -1,21 +1,15 @@
-import "./login.css";
 import { React } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
+import { Link } from "react-router-dom";
+import "./login.css";
 
 const Login = () => {
   // <!-- LOGIN CARD -->
 
   //   const [showPassword, setShowPassword] = useState(false)
-
-  //to navigate to a specific page after login and to catch errors
-
-  const { setAuth } = useAuth();
-
-  const navigate = useNavigate();
-  const [errors, setErrors] = useState("");
 
   //setting the initial values for email and password
 
@@ -26,7 +20,14 @@ const Login = () => {
 
   // test creds: adarshbalika@gmail.com, adarshbalika
 
+  const { setAuth } = useAuth();
+
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState("");
+
   const loginHandler = async () => {
+    //to navigate to a specific page after login and to catch errors
+
     try {
       //setting the auth value
 
@@ -44,7 +45,7 @@ const Login = () => {
       //we wait for the user to click on login
 
       const response = await axios.post(`/api/auth/login`, {
-        email: input.email,
+        email: input.email, ///se send these values to the backend that we get from the user to check whether this user exists. The test credentials are adarsh balika, this user exists on the backend.
         password: input.password,
       });
 
@@ -61,7 +62,7 @@ const Login = () => {
       }));
       navigate("/");
     } catch (errors) {
-      setErrors(errors.response.data.createError); // we get the postion this from above for status code 500
+      setErrors(errors.response.data.createError); // we get the position this from above for status code 500
     }
   };
 
@@ -73,6 +74,7 @@ const Login = () => {
         <div className="login-subdetails">
           <p className="subdetails-header">Email address</p>
           <input
+            required
             className="login-input"
             placeholder="kaustubh@gmail.com"
             type="email"
@@ -84,6 +86,7 @@ const Login = () => {
         <div className="login-subdetails">
           <p className="subdetails-header">Password</p>
           <input
+            required
             className="login-input"
             placeholder="********"
             type="password"

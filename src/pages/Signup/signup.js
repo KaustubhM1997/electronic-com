@@ -29,7 +29,7 @@ const Signup = () => {
       setErrors(""); // no error as well
 
       const response = await axios.post(`/api/auth/signup`, {
-        //we get the user details here when onclick happens which we store in the backend and get an encodedtoken in response
+        //we post the user details to the server and in response get the token which we store in the local storage. 
 
         name: initialValue.name,
         email: initialValue.email,
@@ -37,7 +37,7 @@ const Signup = () => {
         confirmPassword: initialValue.confirmPassword,
       });
 
-      localStorage.setItem("TOKEN", response.data.encodedToken); // we then store the token on client in localstorage, where "TOKEN" is the key and the other is value
+      localStorage.setItem("TOKEN", response.data.encodedToken); // we then store the token on client in localstorage, where "TOKEN" is the key and the other is value we get from the backend
 
       //now when the token is created and the user logs in, this is what we setAuth to and navigate the user to homepage
 

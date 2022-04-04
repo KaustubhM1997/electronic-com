@@ -3,6 +3,7 @@ import "../../pages/Home/home.css";
 import { signOut } from "../../services/signoutService";
 import { useAuth } from "../../contexts/auth-context";
 import { useWishlist } from "../../contexts/wishlist-context";
+import { useCart } from "../../contexts/cart-context";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -10,18 +11,26 @@ const Nav = () => {
     auth: { Authenticated },
     setAuth,
   } = useAuth();
+  /* destructuring setauth and auth and further destructuring Authenticated from auth */
 
   const {
     state: { wishlist },
   } = useWishlist();
 
-  {
-    /* destructuring setauth and auth and further destructuring Authenticated from auth */
-  }
+  const {
+    state: { cartlist },
+  } = useCart();
+
   return (
     <nav className="navigation-container">
       <div className="nav-brand">
-        <NavLink className="header-style" to="/">
+        <NavLink style={({isActive}) => {
+
+          return {
+
+            backgroundColor: isActive ? "var(--secondary-color)" : ""
+          }
+        }}   className="header-style" to="/">
           NOZAMA
           <i className="fa-solid fa-arrow-left-long nav-logo"></i>
         </NavLink>
@@ -41,7 +50,16 @@ const Nav = () => {
         )}
 
         <div className="badge-element nav-item">
-          <NavLink className="nav-icon" to= {Authenticated ? "/wishlist": "/login-page"}>
+          <NavLink style={({isActive}) => {
+
+            return {
+
+              backgroundColor: isActive ? "var(--secondary-color)": ""
+            }
+          }}
+            className="nav-icon"
+            to={Authenticated ? "/wishlist" : "/login-page"}
+          >
             <i className="fa-regular fa-heart icon">
               {Authenticated && wishlist.length > 0 ? (
                 <span className="notif-cart">{wishlist.length}</span>
@@ -51,9 +69,21 @@ const Nav = () => {
         </div>
 
         <div className="badge-element nav-item">
-          <NavLink to="/cart-management">
+          <NavLink
+
+          style={({isActive}) => {
+
+            return {
+
+              backgroundColor: isActive ? "var(--secondary-color)": ""
+            }
+          }}
+          
+          to={Authenticated ? "/cart-management" : "/login-page"}>
             <i className="fa-solid fa-cart-arrow-down icon">
-              <span className="notif-cart">7</span>
+              {Authenticated && cartlist.length > 0 ? (
+                <span className="notif-cart">{cartlist.length}</span>
+              ) : null}
             </i>
           </NavLink>
         </div>

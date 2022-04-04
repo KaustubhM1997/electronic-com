@@ -1,5 +1,6 @@
 import "../App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route
+} from "react-router-dom";
 import { Home } from "../pages/Home/Home";
 import { ProductListing } from "../pages/Product-listing/product-listing";
 import { Wishlist } from "../pages/Wishlist/wishlist";
@@ -7,6 +8,7 @@ import { Cart } from "../pages/Cart/cart";
 import { Login } from "../pages/Login/login";
 import { Signup } from "../pages/Signup/signup";
 import Mockman from "mockman-js";
+import { NoMatch } from "../pages/NoMatch/noMatch";
 import "../Routes/routes.css";
 
 const ParentRouter = () => {
@@ -20,6 +22,7 @@ const ParentRouter = () => {
         <Route path="/login-page" element={<Login />}></Route>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/signup-page" element={<Signup />}></Route>
+        <Route path="*" element = {<NoMatch/>}></Route>
       </Routes>
     </div>
   );
