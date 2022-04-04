@@ -6,7 +6,7 @@ import { useWishlist } from "../../contexts/wishlist-context";
 import "../../pages/Cart/cart.css";
 
 const CartCard = ({ cartItems }) => {
-  const { title, price, productImg, _id } = cartItems;
+  const { title, price, productImg, _id} = cartItems;
 
   const { dispatch } = useCart();
   const {

@@ -9,7 +9,7 @@ const Cart = () => {
     state: { cartlist },
   } = useCart();
 
-  console.log(cartlist);
+  const { title, price, productImg, _id, originalPrice} = cartlist;
 
   return (
     <>
@@ -39,8 +39,8 @@ const Cart = () => {
         <div className="price-details-wrapper">
           <div className="price-details-cart">
             <div className="price-spec-cart">
-              <span>Price (2 Items)</span>
-              <span>₹19,000</span>
+              <span>Price ({cartlist.length} Items)</span>
+              <span>{originalPrice}</span>
             </div>
 
             <div className="price-spec-cart">
