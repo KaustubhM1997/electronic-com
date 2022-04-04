@@ -42,8 +42,6 @@ const ProductCard = ({ productcard }) => {
           }
         );
 
-        // console.log(response.data.wishlist);
-
         setErrors("");
         //the dispatch fires here as soon as the user clicks on heart
         dispatch({
@@ -92,8 +90,6 @@ const ProductCard = ({ productcard }) => {
             headers: { authorization: token },
           }
         );
-
-        // console.log(response);
 
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
       } catch (errors) {

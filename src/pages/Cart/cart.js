@@ -36,10 +36,7 @@ const Cart = () => {
 
         {/* Using setstate, I can put a flag here to put a condition where if cartlist items are less than 0 then the price card should disppear as well, and should only appear when carlist items are greater than 0  */}
 
-        <div className="price-details-wrapper"
-          
-        >
-
+        <div className="price-details-wrapper">
           <div className="price-details-cart">
             <div className="price-spec-cart">
               <span>Price (2 Items)</span>

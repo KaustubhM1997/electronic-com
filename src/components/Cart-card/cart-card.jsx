@@ -8,10 +8,7 @@ import "../../pages/Cart/cart.css";
 const CartCard = ({ cartItems }) => {
   const { title, price, productImg, _id } = cartItems;
 
-  const {
-    dispatch,
-    state: { cartlist },
-  } = useCart();
+  const { dispatch } = useCart();
   const {
     state: { wishlist },
     dispatch: wishlistDispatch,
@@ -65,15 +62,15 @@ const CartCard = ({ cartItems }) => {
     }
   };
 
-  // function to increase cart quantity
+  // function to update cart quantity (increase/decrease) based on type
 
-  const increaseQuantity = async (id) => {
+  const updateQuantity = async (id, type) => {
     try {
       const response = await axios.post(
         `/api/user/cart/${id}`,
         {
           action: {
-            type: "increment",
+            type,
           },
         },
         {
@@ -85,30 +82,6 @@ const CartCard = ({ cartItems }) => {
       dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
 
       // console.log(response.data.cart);
-    } catch (errors) {
-      console.log(errors.message);
-    }
-  };
-
-  //funtion to decrease cart quantity
-
-  const decreaseQuantity = async (id) => {
-    try {
-      const response = await axios.post(
-        `/api/user/cart/${id}`,
-        {
-          action: {
-            type: "decrement",
-          },
-        },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-
-      dispatch({ type: "ADD_TO_CART", payload: response.data.cart });
     } catch (errors) {
       console.log(errors.message);
     }
@@ -134,7 +107,7 @@ const CartCard = ({ cartItems }) => {
                 if (cartItems.qty === 1) {
                   deleteFromCartHandler(cartItems._id);
                 } else {
-                  decreaseQuantity(cartItems._id);
+                  updateQuantity(cartItems._id, "decrement");
                 }
               }}
               className="btn-cart"
@@ -144,7 +117,7 @@ const CartCard = ({ cartItems }) => {
             {/* <input className="qty-input-cart" type="number" /> */}
             {cartItems.qty}
             <button
-              onClick={() => increaseQuantity(cartItems._id)}
+              onClick={() => updateQuantity(cartItems._id, "increment")}
               className="btn-cart"
             >
               +
@@ -152,18 +125,22 @@ const CartCard = ({ cartItems }) => {
           </div>
 
           <div className="cta-buttons-cart">
-            {wishlist.find((item) => item._id === _id) ? (<button
-              onClick={() => navigate("/wishlist")}
-              className="btn-primary"
-            >
-              Go to Wishlist
-            </button>): <button
-              onClick={() => moveToWishlistHandler(cartItems)}
-              className="btn-primary"
-            >
-              Move to Wishlist
-            </button>}
-            
+            {wishlist.find((item) => item._id === _id) ? (
+              <button
+                onClick={() => navigate("/wishlist")}
+                className="btn-primary"
+              >
+                Go to Wishlist
+              </button>
+            ) : (
+              <button
+                onClick={() => moveToWishlistHandler(cartItems)}
+                className="btn-primary"
+              >
+                Move to Wishlist
+              </button>
+            )}
+
             <span
               onClick={() => deleteFromCartHandler(cartItems._id)}
               className="card-heart-icon secondary-cart"

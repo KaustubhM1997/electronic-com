@@ -16,7 +16,10 @@ const WishlistCard = ({ wishlistItems }) => {
   const {
     auth: { Authenticated, token },
   } = useAuth();
-  const { state: {wishlist}, dispatch: Wishlistdispatch } = useWishlist(); //renaming dispatch for better readibility
+  const {
+    state: { wishlist },
+    dispatch: Wishlistdispatch,
+  } = useWishlist(); //renaming dispatch for better readibility
   const navigate = useNavigate();
   const deleteFromWishlist = async (id) => {
     if (Authenticated) {
@@ -87,10 +90,8 @@ const WishlistCard = ({ wishlistItems }) => {
             <span className="text-line-through">7,999</span>
             <span className="discount-percent">40%</span>
           </p>
-        
-          {
-        cartlist.find((item) => item._id === _id) //we're just comparing the id of the item in cart to the id of the item in wishlist that we got from the prop above
-         ? (  
+
+          {cartlist.find((item) => item._id === _id) ? ( //we're just comparing the id of the item in cart to the id of the item in wishlist that we got from the prop above
             <button
               onClick={() => navigate("/cart-management")}
               className="btn btn-secondary"

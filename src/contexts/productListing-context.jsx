@@ -15,8 +15,6 @@ const initialFilters = {
 const ProductListing = createContext(null);
 
 const ProductProvider = ({ children }) => {
-  // Defining the reducer
-
   const [state, dispatch] = useReducer(productReducer, initialFilters);
 
   return (
