@@ -5,10 +5,12 @@ import axios from "axios";
 import { useState } from "react";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
+import { useProductListing } from "../../contexts/productListing-context";
 
 const ProductCard = ({ productcard }) => {
   //destructuring the product card object from props
   const { state, dispatch } = useWishlist();
+
 
   //extracting the wishlist from state where it was stored
 

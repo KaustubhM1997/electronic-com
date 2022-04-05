@@ -6,7 +6,7 @@ import { useWishlist } from "../../contexts/wishlist-context";
 import "../../pages/Cart/cart.css";
 
 const CartCard = ({ cartItems }) => {
-  const { title, price, productImg, _id} = cartItems;
+  const { title, price, productImg, _id, originalPrice } = cartItems;
 
   const { dispatch } = useCart();
   const {
@@ -86,6 +86,8 @@ const CartCard = ({ cartItems }) => {
       console.log(errors.message);
     }
   };
+
+  const notify = () => toast("Wow so easy!");
   return (
     <>
       {/* <!-- Cart card --> */}
@@ -97,8 +99,8 @@ const CartCard = ({ cartItems }) => {
         <div className="product-details-cart">
           <span className="card-heading-cart">{title}</span>
           <div className="product-price-cart">
-            <span className="discount-price-cart">{price}</span>
-            <small className="text-line-through-cart">₹7,999</small>
+            <span className="discount-price-cart">₹{price}</span>
+            <small className="text-line-through-cart">₹{originalPrice}</small>
           </div>
 
           <div className="quantity-cart">

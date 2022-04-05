@@ -9,7 +9,18 @@ const Cart = () => {
     state: { cartlist },
   } = useCart();
 
-  const { title, price, productImg, _id, originalPrice} = cartlist;
+  const [ price, _id, originalPrice] = cartlist;
+
+  // const discount = Math.round(Number(originalPrice - price));    
+
+  const actualTotalPrice = Math.round(cartlist.reduce((acc, current) => acc + Number(current.originalPrice * current.qty), 0));
+
+  const totalDiscount = Math.round(cartlist.reduce((acc, current) => acc+ Number((current.originalPrice - current.price) * current.qty), 0));
+
+  const finalPrice = Math.round(actualTotalPrice - totalDiscount);
+
+
+
 
   return (
     <>
@@ -36,16 +47,18 @@ const Cart = () => {
 
         {/* Using setstate, I can put a flag here to put a condition where if cartlist items are less than 0 then the price card should disppear as well, and should only appear when carlist items are greater than 0  */}
 
+
+
         <div className="price-details-wrapper">
           <div className="price-details-cart">
             <div className="price-spec-cart">
               <span>Price ({cartlist.length} Items)</span>
-              <span>{originalPrice}</span>
+              <span>₹{actualTotalPrice}</span>
             </div>
 
             <div className="price-spec-cart">
               <span>Discount</span>
-              <span className="text-green-cart">- ₹4,600</span>
+              <span className="text-green-cart">₹{totalDiscount}</span>
             </div>
 
             <div className="price-spec-cart">
@@ -57,7 +70,7 @@ const Cart = () => {
 
             <div className="price-spec-cart">
               <span>Total Amount</span>
-              <span>₹14,400</span>
+              <span>₹{finalPrice}</span>
             </div>
 
             <hr class="theme-break" />
