@@ -12,8 +12,6 @@ const initialFilters = {
   priceRange: 1990,
 };
 
-
-
 const ProductListing = createContext(null);
 
 const ProductProvider = ({ children }) => {

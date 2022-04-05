@@ -12,6 +12,11 @@
   right: 0.7rem;
 }
 
+.home-card-style {
+
+  text-decoration: none;
+}
+
 .category-row2 {
   margin-top: -25rem;
 }

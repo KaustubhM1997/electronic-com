@@ -9,18 +9,24 @@ const Cart = () => {
     state: { cartlist },
   } = useCart();
 
-  const [ price, _id, originalPrice] = cartlist;
+  //All the cart items are present in cartlist, hence we desctructure cartlist here from its state through context
 
-  // const discount = Math.round(Number(originalPrice - price));    
+  const actualTotalPrice = Math.round(
+    cartlist.reduce(
+      (acc, current) => acc + Number(current.originalPrice * current.qty),
+      0
+    )
+  );
 
-  const actualTotalPrice = Math.round(cartlist.reduce((acc, current) => acc + Number(current.originalPrice * current.qty), 0));
-
-  const totalDiscount = Math.round(cartlist.reduce((acc, current) => acc+ Number((current.originalPrice - current.price) * current.qty), 0));
+  const totalDiscount = Math.round(
+    cartlist.reduce(
+      (acc, current) =>
+        acc + Number((current.originalPrice - current.price) * current.qty),
+      0
+    )
+  );
 
   const finalPrice = Math.round(actualTotalPrice - totalDiscount);
-
-
-
 
   return (
     <>
@@ -46,8 +52,6 @@ const Cart = () => {
         {/* <!-- Price card --> */}
 
         {/* Using setstate, I can put a flag here to put a condition where if cartlist items are less than 0 then the price card should disppear as well, and should only appear when carlist items are greater than 0  */}
-
-
 
         <div className="price-details-wrapper">
           <div className="price-details-cart">

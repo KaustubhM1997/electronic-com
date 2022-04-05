@@ -32,7 +32,7 @@ const Home = () => {
 
         {/* Mapping and passing to the card component */}
 
-        <Link to="/product-listing">
+        <Link className="home-card-style" to="/product-listing">
           <div className="card-container">
             {categories.map(
               // we take the categories from backend
