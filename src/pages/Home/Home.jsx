@@ -8,7 +8,6 @@ const Home = () => {
   // const [categoryMen] = categories; //categories is an array of objects // we would do this only if there was one category and pass categoryMen into category below.
 
   const { dispatch } = useProductListing();
-  // console.log(productDispatch, "there");
   return (
     <>
       <section className="container-img">

@@ -14,7 +14,6 @@ const productReducer = (state, action) => {
       return { ...state, fastDelivery: action.payload };
     case "CATEGORY":
       const categoryExist = state.category.includes(action.payload); //this stores the payload fired by the user
-      console.log(action.payload, "here");
 
       return categoryExist
         ? {

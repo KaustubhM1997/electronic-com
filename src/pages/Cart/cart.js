@@ -8,7 +8,7 @@ const Cart = () => {
   const {
     state: { cartlist },
   } = useCart();
-  const add = 1 + 2; //test
+
 
   //All the cart items are present in cartlist, hence we desctructure cartlist here from its state through context
 
