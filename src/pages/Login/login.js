@@ -60,7 +60,7 @@ const Login = () => {
         Authenticated: true,
         token: response.data.encodedToken,
       }));
-      navigate("/");
+      navigate("/"); //after the user has logged in, we navigate him to the home page
     } catch (errors) {
       setErrors(errors.response.data.createError); // we get the position this from above for status code 500
     }

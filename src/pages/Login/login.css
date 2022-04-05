@@ -110,6 +110,6 @@
 
 .new-account .text {
   text-decoration: none;
-  color: black;
+  color: var(--badge-background);
   font-weight: bold;
 }
