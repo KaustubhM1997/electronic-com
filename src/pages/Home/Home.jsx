@@ -2,9 +2,12 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import { Card } from "../../components/Home-card/home-card.jsx";
 import { categories } from "../../backend/db/categories";
+import { useProductListing } from "../../contexts/productListing-context";
 
 const Home = () => {
   // const [categoryMen] = categories; //categories is an array of objects // we would do this only if there was one category and pass categoryMen into category below.
+
+  const { dispatch } = useProductListing();
   return (
     <>
       <section className="container-img">
@@ -28,17 +31,32 @@ const Home = () => {
 
         {/* Mapping and passing to the card component */}
 
-        <div className="card-container">
-          {categories.map(
-            // we take the categories from backend
-            (
-              categor //categor is every element from the categories database
-            ) => (
-              <Card key={categor._id} category={categor} /> //we use key as categor.id as categories (backend has a unique id). We take all categor elements we get from the database and put them in an object which we store in category. Then we pass category to our card component and then destructure it into categoryName and categoryId (these keys are present in categories). Then we just render the destrcutured items as JSX.
-            )
-            // this is an object
-          )}
-        </div>
+        <Link className="home-card-style" to="/product-listing">
+          <div className="card-container">
+            {categories.map(
+              // we take the categories from backend
+              (
+                categor //categor is every element from the categories database
+              ) => (
+
+                //mapping the products from home page to product listing. Applying clear so that the previously selected one gets cleared
+                <div
+                  onClick={() => {
+                    dispatch({ type: "CLEAR" });
+                    dispatch({
+                      type: "CATEGORY",
+                      payload: categor.categoryName,
+                    });
+                  }}
+                >
+                  <Card key={categor._id} category={categor} />
+                </div>
+                //we use key as categor.id as categories (backend has a unique id). We take all categor elements we get from the database and put them in an object which we store in category. Then we pass category to our card component and then destructure it into categoryName and categoryId (these keys are present in categories). Then we just render the destrcutured items as JSX.
+              )
+              // this is an object
+            )}
+          </div>
+        </Link>
       </div>
 
       <div className="category-row2">

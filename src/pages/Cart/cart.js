@@ -9,7 +9,25 @@ const Cart = () => {
     state: { cartlist },
   } = useCart();
 
-  console.log(cartlist);
+
+  //All the cart items are present in cartlist, hence we desctructure cartlist here from its state through context
+
+  const actualTotalPrice = Math.round(
+    cartlist.reduce(
+      (acc, current) => acc + Number(current.originalPrice * current.qty),
+      0
+    )
+  );
+
+  const totalDiscount = Math.round(
+    cartlist.reduce(
+      (acc, current) =>
+        acc + Number((current.originalPrice - current.price) * current.qty),
+      0
+    )
+  );
+
+  const finalPrice = Math.round(actualTotalPrice - totalDiscount);
 
   return (
     <>
@@ -39,13 +57,13 @@ const Cart = () => {
         <div className="price-details-wrapper">
           <div className="price-details-cart">
             <div className="price-spec-cart">
-              <span>Price (2 Items)</span>
-              <span>₹19,000</span>
+              <span>Price ({cartlist.length} Items)</span>
+              <span>₹{actualTotalPrice}</span>
             </div>
 
             <div className="price-spec-cart">
               <span>Discount</span>
-              <span className="text-green-cart">- ₹4,600</span>
+              <span className="text-green-cart">₹{totalDiscount}</span>
             </div>
 
             <div className="price-spec-cart">
@@ -57,7 +75,7 @@ const Cart = () => {
 
             <div className="price-spec-cart">
               <span>Total Amount</span>
-              <span>₹14,400</span>
+              <span>₹{finalPrice}</span>
             </div>
 
             <hr class="theme-break" />

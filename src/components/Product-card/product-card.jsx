@@ -5,16 +5,22 @@ import axios from "axios";
 import { useState } from "react";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
+import { useProductListing } from "../../contexts/productListing-context";
 
 const ProductCard = ({ productcard }) => {
   //destructuring the product card object from props
   const { state, dispatch } = useWishlist();
 
+
   //extracting the wishlist from state where it was stored
 
   const { wishlist } = state;
 
-  const { title, price, rating, productImg } = productcard; // destrructuring all the keys from productcard
+  const { title, price, rating, productImg, originalPrice } = productcard; // destrructuring all the keys from productcard
+
+    //calculating discount percentage
+
+    const discountPercent = Math.ceil(((originalPrice - price)/originalPrice) * 100)
 
   const {
     auth: { Authenticated, token },
@@ -123,8 +129,8 @@ const ProductCard = ({ productcard }) => {
             </p> */}
           <p className="card-text card-price">
             {price}
-            <span className="text-line-through">7,999</span>
-            <span className="discount-percent">40%</span>
+            <span className="text-line-through">{originalPrice}</span>
+            <span className="discount-percent">{discountPercent}%</span>
           </p>
 
           {/* If the item id present in the cart is equal to the one in the product page then we take the users to the cart page or else show the add to cart button */}
