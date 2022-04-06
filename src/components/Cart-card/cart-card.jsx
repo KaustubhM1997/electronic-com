@@ -87,7 +87,7 @@ const CartCard = ({ cartItems }) => {
     }
   };
 
-  const notify = () => toast("Wow so easy!");
+  // const notify = () => toast("Wow so easy!");
   return (
     <>
       {/* <!-- Cart card --> */}

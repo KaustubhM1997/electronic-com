@@ -9,7 +9,6 @@ const Cart = () => {
     state: { cartlist },
   } = useCart();
 
-
   //All the cart items are present in cartlist, hence we desctructure cartlist here from its state through context
 
   const actualTotalPrice = Math.round(
@@ -57,10 +56,11 @@ const Cart = () => {
         <div className="price-details-wrapper">
           <div className="price-details-cart">
             <div className="price-spec-cart">
-              <span>Price ({cartlist.length} Items)</span>
+              <span>
+                Price ({cartlist.reduce((a, b) => a + b.qty, 0)} Items)
+              </span>
               <span>₹{actualTotalPrice}</span>
             </div>
-
             <div className="price-spec-cart">
               <span>Discount</span>
               <span className="text-green-cart">₹{totalDiscount}</span>
