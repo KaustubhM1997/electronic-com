@@ -4,6 +4,8 @@ import { signOut } from "../../services/signoutService";
 import { useAuth } from "../../contexts/auth-context";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
+import {toast} from 'react-hot-toast';
+import { useState } from "react/cjs/react.production.min";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -58,7 +60,8 @@ const Nav = () => {
             }
           }}
             className="nav-icon"
-            to={Authenticated ? "/wishlist" : "/login-page"}
+            to={Authenticated ? "/wishlist" :  "/login-page "}
+            
           >
             <i className="fa-regular fa-heart icon">
               {Authenticated && wishlist.length > 0 ? (

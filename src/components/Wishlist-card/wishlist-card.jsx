@@ -4,6 +4,7 @@ import { useWishlist } from "../../contexts/wishlist-context";
 import "../../pages/Product-listing/product-listing.css";
 import axios from "axios";
 import { useCart } from "../../contexts/cart-context";
+import {toast} from 'react-hot-toast';
 
 const WishlistCard = ({ wishlistItems }) => {
   const { title, price, rating, productImg, _id } = wishlistItems;
@@ -24,6 +25,7 @@ const WishlistCard = ({ wishlistItems }) => {
   const deleteFromWishlist = async (id) => {
     if (Authenticated) {
       try {
+        toast.error('Item removed from Wishlist');
         const response = await axios.delete(`/api/user/wishlist/${id}`, {
           headers: { authorization: token },
         });
@@ -46,6 +48,7 @@ const WishlistCard = ({ wishlistItems }) => {
   const addToCartHandler = async (wishlistItems) => {
     if (Authenticated) {
       try {
+        toast.success('Item moved to Cart!');
         if (cartlist.find((item) => item._id === wishlistItems._id)) {
           console.log("The item is already present in the cart");
         } else {

@@ -1,3 +1,5 @@
+import {toast} from 'react-hot-toast';
+
 const signOut = (setAuth, navigate) => {
   localStorage.removeItem("TOKEN");
   setAuth({
@@ -5,6 +7,7 @@ const signOut = (setAuth, navigate) => {
     token: "",
   });
   navigate("/");
+  toast.error('You have now logged out')
 };
 
 export { signOut };
