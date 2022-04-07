@@ -5,7 +5,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useWishlist } from "../../contexts/wishlist-context";
 import { useCart } from "../../contexts/cart-context";
-import { useProductListing } from "../../contexts/productListing-context";
+import {toast} from 'react-hot-toast';
+
 
 const ProductCard = ({ productcard }) => {
   //destructuring the product card object from props
@@ -40,6 +41,7 @@ const ProductCard = ({ productcard }) => {
     //as soon as the user logs in, the pre-exisiting wishlist items are shown and then anything the user adds from product paage is added below when dispatch fires
     if (Authenticated) {
       try {
+        toast.success('Item added to Wishlist!');
         const response = await axios.post(
           "/api/user/wishlist",
           { product: productcard }, //product is the predefined key that we pass the producttcard value object to. We're just added the productcard (product clciked by the user) to the backend
@@ -68,6 +70,7 @@ const ProductCard = ({ productcard }) => {
   const removeFromWishlistHandler = async (id) => {
     if (Authenticated) {
       try {
+        toast.error('Item removed from Wishlist');
         const response = await axios.delete(`/api/user/wishlist/${id}`, {
           headers: { authorization: token },
         });
@@ -89,6 +92,7 @@ const ProductCard = ({ productcard }) => {
   const addToCartHandler = async (productcard) => {
     if (Authenticated) {
       try {
+        toast.success('Item added to Cart!');
         const response = await axios.post(
           "/api/user/cart",
           { product: productcard },

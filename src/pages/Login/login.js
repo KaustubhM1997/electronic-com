@@ -5,6 +5,7 @@ import axios from "axios";
 import { useAuth } from "../../contexts/auth-context";
 import { Link } from "react-router-dom";
 import "./login.css";
+import {toast} from 'react-hot-toast';
 
 const Login = () => {
   // <!-- LOGIN CARD -->
@@ -61,6 +62,8 @@ const Login = () => {
         token: response.data.encodedToken,
       }));
       navigate("/"); //after the user has logged in, we navigate him to the home page
+
+      toast.success("Login successful!");
     } catch (errors) {
       setErrors(errors.response.data.createError); // we get the position this from above for status code 500
     }

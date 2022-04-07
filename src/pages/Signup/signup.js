@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useState } from "react";
 import axios from "axios";
+import {toast} from 'react-hot-toast';
 
 const Signup = () => {
   // <!-- Signup CARD -->
@@ -20,6 +21,7 @@ const Signup = () => {
 
   const signUpHandler = async () => {
     try {
+      toast.success('Signup successful!');
       //initially there would be no token as the user hasn't put any details yet
 
       setAuth({
